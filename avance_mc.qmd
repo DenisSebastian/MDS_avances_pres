@@ -70,13 +70,18 @@ format:
 :::
 :::
 
+
+
+## {background-image="images/diagrama_actual.png" background-size="75%" background-position="center"}
+
+
 # Área de Estudio: Chiloé
 
 
 ## {background-image="images/areas_relevancia_tur.png" background-size="75%" background-position="center"}
 
 
-##  DD: RBG ST_001 {.p_small}
+##  RBG ST_001 
 
 
 <center>
@@ -86,7 +91,7 @@ knitr::include_url("html/ST_001/RGB_roi.html", height = "500px")
 </center>
 
 
-##  DD: SAR ST_001 {.p_small}
+##  SAR ST_001 
 
 
 <center>
@@ -409,15 +414,31 @@ knitr::include_url("html/ST_001/PCAK_EDI_roi.html", height = "500px")
 ```
 </center>
 
+# Conclusiones
 
+
+::: columns
+::: {.column  width="50%" .p_small}
+
+-   Se experimentó 6 métodos convencionales de cáculo de diferencia de Imágenes Radar (SAR), destacando _Log Mean Ratio (LMR)_, _Enhanced Difference Image (EDI)_ y especifíco su postproceso con [SAM](https://segment-anything.com) e inclusive el método de _Diferencia Directa (DD)_.
+-   Los cambios generales que detecta de forma correcta los vegetación, ya sea deforestación o cultivos y edificaciones, pero en el sitio denominado Turberà ninguno de los métodos identificó de forma correcta.
+
+:::
+
+::: {.column width="5%"}
+:::
+
+::: {.column width="45%" .p_small}
+
+![Tipo de Turbera en Chiloé, es dificil de diferenciar a simple vista. Estudio de Treimun 2016](images/turba_a.png){fig-align="center" width="600"}
+
+:::
+:::
 
 
 # Trabajos Futuros
 
 
-## {background-image="images/diagrama_actual.png" background-size="75%" background-position="center"}
-
-## Trabajos Futuros
 
 
 ::: columns
@@ -426,7 +447,7 @@ knitr::include_url("html/ST_001/PCAK_EDI_roi.html", height = "500px")
 -   Experimentar con otros áreas de estudio en Chiloé
 -   Experimentar con otros Ecosistemas
 -   Consolidad Métricas
--   Crear impplemetación FastSAM con data espacial
+-   Crear implemetación de [FastSAM](https://github.com/CASIA-IVA-Lab/FastSAM) [@zhao2023fast] con data espacial
 -   Iterar por cada elemento de la serie de imágenes 
 -   Documentar Avances
 :::
@@ -436,7 +457,7 @@ knitr::include_url("html/ST_001/PCAK_EDI_roi.html", height = "500px")
 
 ::: {.column width="50%" .p_small}
 
-![Estado actual](images/diagrama_actual.png){fig-align="center" width="600"}
+![](images/diagrama_actual.png){fig-align="center" width="600"}
 
 :::
 :::
