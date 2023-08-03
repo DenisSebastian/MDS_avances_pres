@@ -1,7 +1,7 @@
 ---
 title: "Avance de Tesis: Métodos Convencionales (2)"
 subtitle: "Sistema de Detección de Cambios en Cambios en Ambientes Naturales Protegidos utilizando CNN"
-author: "Denis Berroeta"
+# author: "Denis Berroeta"
 # date: "06-03-2023"
 bibliography: references.bib
 format:
