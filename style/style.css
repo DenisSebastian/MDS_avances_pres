@@ -7,7 +7,7 @@
 
 
 .reveal .slide-background-content{
-  background-image: url("../images/DO-logo.png"),  url("../images/uai_fic.jpeg");
+  background-image: url("images/DO-logo.png"),  url("../images/uai_fic.jpeg");
   background-size: 5%, 15%;
   opacity: 1;
   background-repeat: no-repeat;
