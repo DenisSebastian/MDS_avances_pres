@@ -425,7 +425,8 @@ knitr::include_url("html/ST_001/PCAK_EDI_roi.html", height = "500px")
 
 -   Experimentar con otros áreas de estudio en Chiloé
 -   Experimentar con otros Ecosistemas
--   Consolidad Métricas 
+-   Consolidad Métricas
+-   Crear impplemetación FastSAM con data espacial
 -   Iterar por cada elemento de la serie de imágenes 
 -   Documentar Avances
 :::
