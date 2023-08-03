@@ -1,0 +1,80 @@
+
+
+# Antecedentes ------------------------------------------------------------
+# objetivos: Generar cartos con porcenntajes definidos
+
+
+# Librerias ---------------------------------------------------------------
+library(ggplot2)
+library(dplyr)
+library(sf)
+
+
+# Recursos ----------------------------------------------------------------
+
+mz_iata <- st_read("results/iata_mz/IATA_2023.shp")
+
+
+
+# Parametros de visualización ---------------------------------------------
+
+pal_temp <- c("#FFFF00","#F5CC00","#E69900","#F56200","#FF0000")
+
+
+
+# Breaks ------------------------------------------------------------------
+
+
+# Crear Intervalos
+breaks_fisher <- classIntervals(round(mz_iata$IATA, 2), n = 5, style = "fisher", 
+                                largeN = 10000L, )
+plot(breaks_fisher, pal=pal_temp, main="Fisher's method")
+breaks_fisher$brks
+
+# clasificar por intervalos
+mz_iata$IATA_br <- cut(x = round(mz_iata$IATA, 2), 
+                       breaks =breaks_fisher$brks, 
+                       include.lowest = TRUE, right = TRUE, )
+
+
+
+# Previsulización ---------------------------------------------------------
+
+map_iata <- mapview::mapview(mz_iata %>% 
+                               select(CVEGEO, TOTHOG, VIVTOT,
+                                      POBTOT, IATA_br, IATA),
+                             zcol = "IATA_br",
+                             at = breaks_fisher$brks,
+                             col.regions= pal_temp, 
+                             layer.name = "IATA" )
+
+map_iata
+
+# Guardar los Resultados
+options(browser="/usr/bin/open -a 'Google Chrome'")
+
+path_out_html <- paste0(getwd(), "/docs/html/IATA_2023.html")
+mapshot(map_iata, url = path_out_html)
+browseURL(path_out_html)
+
+# Mapas -------------------------------------------------------------------
+
+
+# Generar Mapa por la variable clasificada
+map_plot <- ggplot() +
+  geom_sf(data = mz_iata , 
+          aes(fill = IATA_br), color =NA) + 
+  scale_fill_manual("ICV", values = pal_temp )+
+  ggtitle(label = "Indicador de Amplitud Térmica", 
+          subtitle = "Ciudad de Guadalajara" ) +
+  theme_bw() +
+  theme(panel.grid.major = element_line(colour = "gray80"), 
+        panel.grid.minor = element_line(colour = "gray80"))
+map_plot
+
+
+# Guardar los Resultados
+path_out_plot = "docs/images"
+out_name_plot = paste0(path_out_plot, "/IATA.png")
+ggsave(plot = map_plot, filename =out_name_plot, width = 8, height = 8)
+

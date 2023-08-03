@@ -1,0 +1,38 @@
+@article{Mart_n_Sotoca_2019,
+	doi = {10.5194/nhess-19-1685-2019},
+	url = {https://doi.org/10.5194%2Fnhess-19-1685-2019},
+	year = 2019,
+	month = {aug},
+	publisher = {Copernicus {GmbH}},
+	volume = {19},
+	number = {8},
+	pages = {1685--1702},
+	author = {Juan Jos{\'{e}} Mart{\'{\i}}n-Sotoca and Antonio Saa-Requejo and Rub{\'{e}}n Moratiel and Nicolas Dalezios and Ioannis Faraslis and Ana Mar{\'{\i}}a Tarquis},
+	title = {Statistical analysis for satellite-index-based insurance  to define damaged pasture thresholds},
+	journal = {Natural Hazards and Earth System Sciences}
+}
+
+
+
+@article{Myneni_1995,
+	doi = {10.1109/36.377948},
+	url = {https://doi.org/10.1109%2F36.377948},
+	year = 1995,
+	month = {mar},
+	publisher = {Institute of Electrical and Electronics Engineers ({IEEE})},
+	volume = {33},
+	number = {2},
+	pages = {481--486},
+	author = {R.B. Myneni and F.G. Hall and P.J. Sellers and A.L. Marshak},
+	title = {The interpretation of spectral vegetation indexes},
+	journal = {{IEEE} Transactions on Geoscience and Remote Sensing}
+}
+
+@misc{kirillov2023segment,
+      title={Segment Anything}, 
+      author={Alexander Kirillov and Eric Mintun and Nikhila Ravi and Hanzi Mao and Chloe Rolland and Laura Gustafson and Tete Xiao and Spencer Whitehead and Alexander C. Berg and Wan-Yen Lo and Piotr Dollár and Ross Girshick},
+      year={2023},
+      eprint={2304.02643},
+      archivePrefix={arXiv},
+      primaryClass={cs.CV}
+}

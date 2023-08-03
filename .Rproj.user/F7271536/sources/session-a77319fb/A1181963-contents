@@ -1,0 +1,803 @@
+---
+title: "Avance de Tesis: Métodos Convencionales (2)"
+subtitle: "Sistema de Detección de Cambios en Cambios en Ambientes Naturales Protegidos utilizando CNN"
+# author: "Denis Berroeta"
+# date: "06-03-2023"
+bibliography: references.bib
+format:
+  revealjs:
+    footer: "Avances de Tesis - Denis Berroeta"
+    logo: "images/leaf.png"
+    preview-links: true
+    css: style/style.css
+    transition: slide
+    center: true
+    chalkboard: true
+    theme: default
+---
+
+# Agenda 
+
+## Agenda
+
+::: columns
+::: {.column  width="45%" .p_small}
+
+-   Introducción
+-   Área de Estudio   
+-   Métodos Convencionales
+-   Trabajos Futuros
+-   Bibliografía 
+:::
+
+::: {.column width="5%"}
+:::
+
+::: {.column width="50%" .p_small}
+
+![Turberas en Chile, Parque Karukinka 2022 © Barbara Saavedra](images/3-parque-karukinka-2022-barbara-saavedra.jpeg){fig-align="center" width="600"}
+
+:::
+:::
+
+# Introducción
+
+
+## ¿Alguna vez te has preguntado cómo afecta la temperatura superficial de tu ciudad a tu confort ambiental durante el invierno y el verano? 
+
+
+## Métodos Convecionales
+
+
+::: columns
+::: {.column  width="50%" .p_small}
+
+- Diferencia Directa (DD)
+- Log Ratio (LR)
+- Logarithmic Likelihood Ratio (LLR)
+- Enhanced Difference Image (EDI)
+- Triangular Threshold Segmentation (Douglas-Peucker)
+- Log Mean Ratio (LMR)
+- PCA K-Means (PCAK)
+
+:::
+
+::: {.column width="2%"}
+:::
+
+::: {.column width="48%" .p_small}
+
+![Experimentación de Métodos convencionales con muestras adquiridas en la provincia de Guizhou, China, por el sensor SAR COSMO-SkyMed ](images/mc_p1.png){fig-align="center" width="600"}
+
+:::
+:::
+
+# Área de Estudio: Chiloé
+
+
+## {background-image="images/areas_relevancia_tur.png" background-size="75%" background-position="center"}
+
+
+##  DD: RBG ST_001 {.p_small}
+
+
+<center>
+```{r fig.align='center'}
+knitr::include_url("html/ST_001/RGB_roi.html", height = "500px")
+```
+</center>
+
+
+##  DD: SAR ST_001 {.p_small}
+
+
+<center>
+```{r fig.align='center'}
+knitr::include_url("html/ST_001/SAR_roi.html", height = "500px")
+```
+</center>
+
+
+
+
+## Turberas 
+::: columns
+
+::: {.column  width="50%" .p_small}
+
+
+<br>
+
+
+Turberas:
+: Son un tipo de humedal donde se produce y acumula progresivamente materia orgánica muerta que proviene de plantas adaptadas a vivir en sitios inundados de agua, con un bajo contenido de oxígeno y escasa disponibilidad de nutrientes.
+
+<br>
+
+Turba:
+: La turba es materia orgánica muerta que ha sido formada en un lugar. Este material consta de 90 % de agua y 10% de restos de plantas (briófitos, líquenes, herbáceas de medios húmedos, entre otros)(CKPP, 2008).
+
+
+:::
+::: {.column width="5%"}
+:::
+
+::: {.column width="45%" .p_small}
+
+![Formación de la Turberas en Chiloé. Creditos: [https://turberas.cl]( https://turberas.cl/turberas-generalidades/)](images/formacion_turbera1.jpg){#fig-form_turb fig-align="center" width="400"}
+
+:::
+
+:::
+
+
+
+# MC: Diferencia Directa (DD)
+
+## {background-image="images/slide_dd.png" background-size="75%" background-position="center"}
+
+##  Diferencia Directa (DD): ST_001 
+
+
+<center>
+```{r fig.align='center'}
+knitr::include_url("html/ST_001/DD_roi.html", height = "500px")
+```
+</center>
+
+## DD: Segment Anything Model ([SAM](https://segment-anything.com)) 1 
+
+::: columns
+
+::: {.column  width="45%" .p_small}
+
+
+![Imagen de Diferencia Directa (DD) sin referencia espacial](images/ST_001/DD_DN.png){ fig-align="center" width="500"}
+
+:::
+::: {.column width="5%"}
+:::
+
+::: {.column width="45%" .p_small}
+
+![Imagen de Diferencia Directa (DD) aplicado SAM [@kirillov2023segment]](images/ST_001/DD_DN_SAM.png){fig-align="center" width="500"}
+
+:::
+
+:::
+
+
+## DD: Segment Anything Model ([SAM](https://segment-anything.com)) 2 
+
+
+::: columns
+
+::: {.column  width="45%" .p_small}
+
+
+![Imagen de Diferencia Directa (DD) sin referencia espacial aplicado un kernel 3x3 con la función promedio](images/ST_001/DD_PAD.png){ fig-align="center" width="500"}
+
+:::
+::: {.column width="5%"}
+:::
+
+::: {.column width="45%" .p_small}
+
+![Imagen de Diferencia Directa (DD) kernel 3x3 promedio aplicado  SAM [@kirillov2023segment]](images/ST_001/DD_PAD_SAM.png){fig-align="center" width="500"}
+
+:::
+
+:::
+
+
+
+
+
+
+
+# MC: Log Ratio (LR)
+
+## {background-image="images/slide_lr.png" background-size="75%" background-position="center"}
+
+##  MC: Log Ratio (LR): ST_001
+
+
+<center>
+```{r fig.align='center'}
+knitr::include_url("html/ST_001/LR_roi.html", height = "500px")
+```
+</center>
+
+
+## LR: Segment Anything Model ([SAM](https://segment-anything.com)) 
+
+::: columns
+
+::: {.column  width="45%" .p_small}
+
+
+![Imagen de Log Ratio (LR) sin referencia espacial](images/ST_001/DLR.png){ fig-align="center" width="500"}
+
+:::
+::: {.column width="5%"}
+:::
+
+::: {.column width="45%" .p_small}
+
+![Imagen de Log Ratio (LR) aplicado SAM [@kirillov2023segment]](images/ST_001/DLR_SAM.png){fig-align="center" width="500"}
+
+:::
+
+:::
+
+
+# MC: Logarithmic Likelihood Ratio (LLR)
+
+## {background-image="images/slide_llr.png" background-size="75%" background-position="center"}
+
+##  MC: Logarithmic Likelihood Ratio (LLR): ST_001
+
+
+<center>
+```{r fig.align='center'}
+knitr::include_url("html/ST_001/LLR_roi.html", height = "500px")
+```
+</center>
+
+
+## LLR: Segment Anything Model ([SAM](https://segment-anything.com)) 
+
+::: columns
+
+::: {.column  width="45%" .p_small}
+
+
+![Imagen de Logarithmic Likelihood Ratio (LLR) sin referencia espacial](images/ST_001/LLR.png){ fig-align="center" width="500"}
+
+:::
+::: {.column width="5%"}
+:::
+
+::: {.column width="45%" .p_small}
+
+![Imagen de Logarithmic Likelihood Ratio (LLR) aplicado SAM [@kirillov2023segment]](images/ST_001/LLR_SAM.png){fig-align="center" width="500"}
+
+:::
+
+:::
+
+# MC: Enhanced Difference Image (EDI)
+
+## {background-image="images/slide_edi.png" background-size="75%" background-position="center"}
+
+##  MC: Enhanced Difference Image (EDI): ST_001 
+
+<center>
+```{r fig.align='center'}
+knitr::include_url("html/ST_001/EDI_roi.html", height = "500px")
+```
+</center>
+
+
+## EDI: Segment Anything Model ([SAM](https://segment-anything.com)) 
+
+::: columns
+
+::: {.column  width="45%" .p_small}
+
+
+![Imagen de Enhanced Difference Image (EDI) sin referencia espacial](images/ST_001/EDI.png){ fig-align="center" width="500"}
+
+:::
+::: {.column width="5%"}
+:::
+
+::: {.column width="45%" .p_small}
+
+![Imagen de Enhanced Difference Image (EDI) aplicado SAM [@kirillov2023segment]](images/ST_001/EDI_SAM.png){fig-align="center" width="500"}
+
+:::
+
+:::
+
+# MC: Triangular Threshold Segmentation (Douglas-Peucker)
+
+
+## {background-image="images/slide_tts_dd.png" background-size="75%" background-position="center"}
+
+
+
+## Triangular Threshold Segmentation EDI vs DDI
+
+::: columns
+
+::: {.column  width="45%" .p_small}
+
+
+![Aplicación de  Triangular Threshold Segmentation a Enhanced Difference Image (EDI) con umbral de 77.6 dentro de un rango de 0 a 255](images/ST_001/TTS_EDI.tif){ fig-align="center" width="500"}
+
+:::
+::: {.column width="5%"}
+:::
+
+::: {.column width="45%" .p_small}
+
+![Aplicación de  Triangular Threshold Segmentation a imagen de diferencia directa con umbral de 81.6 dentro de un rango de 0 a 255](images/ST_001/TTS_DD.tif){fig-align="center" width="500"}
+
+:::
+
+:::
+
+
+
+
+
+
+# MC: Log Mean Ratio (LMR)
+
+
+## {background-image="images/slide_lmr.png" background-size="75%" background-position="center"}
+
+##   MC: Log Mean Ratio (LMR): ST_001 
+
+<center>
+```{r fig.align='center'}
+knitr::include_url("html/ST_001/LMR_roi.html", height = "500px")
+```
+</center>
+
+
+## LMR: Segment Anything Model ([SAM](https://segment-anything.com)) 
+
+::: columns
+
+::: {.column  width="45%" .p_small}
+
+
+![Imagen de Log Mean Ratio (LMR) sin referencia espacial](images/ST_001/LMR.png){ fig-align="center" width="500"}
+
+:::
+::: {.column width="5%"}
+:::
+
+::: {.column width="45%" .p_small}
+
+![Imagen de Log Mean Ratio (LMR) aplicado SAM [@kirillov2023segment]](images/ST_001/LMR_SAM.png){fig-align="center" width="500"}
+
+:::
+
+:::
+
+# MC: PCA K-Means (PCAK)
+
+
+## {background-image="images/slide_pcak.png" background-size="75%" background-position="center"}
+
+
+
+## PCAK: Sobre todas las imágenes de diferencia
+
+::: columns
+
+::: {.column  width="25%" .p_small}
+
+
+![Imagen de PCA K-Means (PCAK)  sobre  DD](images/ST_001/PCAK_DD.png){ fig-align="center" width="500"}
+
+:::
+
+::: {.column width="25%" .p_small}
+
+![Imagen de PCA K-Means (PCAK) sobre  LLR](images/ST_001/PCAK_LLR.png){ fig-align="center" width="500"}
+:::
+
+::: {.column width="25%" .p_small}
+![Imagen de PCA K-Means (PCAK) sobre EDI](images/ST_001/PCAK_EDI.png){ fig-align="center" width="500"}
+:::
+
+
+::: {.column width="25%" .p_small}
+
+![Imagen de PCA K-Means (PCAK) sobre  LMR](images/ST_001/PCAK_LMR.png){ fig-align="center" width="500"}
+:::
+:::
+
+
+##   MC: PCA K-Means Sobre EDI
+
+<center>
+```{r fig.align='center'}
+knitr::include_url("html/ST_001/PCAK_EDI_roi.html", height = "500px")
+```
+</center>
+
+
+
+
+# Trabajos Futuros
+
+
+## {background-image="images/diagrama_actual.png" background-size="75%" background-position="center"}
+
+## Trabajos Futuros
+
+
+::: columns
+::: {.column  width="45%" .p_small}
+
+-   Experimentar con otros áreas de estudio en Chiloé
+-   Experimentar con otros Ecosistemas
+-   Consolidad Métricas 
+-   Iterar por cada elemento de la serie de imágenes 
+-   Documentar Avances
+:::
+
+::: {.column width="5%"}
+:::
+
+::: {.column width="50%" .p_small}
+
+![Estado actual](images/diagrama_actual.png){fig-align="center" width="600"}
+
+:::
+:::
+
+# Bibliografía 
+
+
+
+##
+
+<br>
+
+::: {#refs}
+:::
+
+<!-- ## Causas y Efectos -->
+<!-- ::: columns -->
+
+<!-- ::: {.column  width="55%" .p_small} -->
+
+<!-- <br> -->
+
+
+<!-- Albedo e infraestructuras: -->
+<!-- : El asfalto, el hormigón y el ladrillo absorben -en lugar de reflejar- el calor del sol, provocando un aumento de la temperatura de la superficie y del aire debido a su capacidad de almacenamiento térmico. -->
+
+
+<!-- Reducción de la vegetación en zonas urbanas: -->
+<!-- : Minimiza los efectos refrigerantes naturales de la sombra y la evapotranspiración del suelo y la vegetación.     -->
+
+<!-- Calor antropogénico -->
+<!-- : Vehículos, aparatos de aire acondicionado, edificios e instalaciones industriales emiten calor al entorno urbano. -->
+
+<!-- ::: -->
+<!-- ::: {.column width="5%"} -->
+<!-- ::: -->
+
+<!-- ::: {.column width="40%" .p_small} -->
+
+<!-- ![Parks, open land, and bodies of water can create cooler areas within a city. Temperatures are typically lower at suburban-rural borders than in downtown areas. Credit: [EPA](https://www.epa.gov/heatislands/learn-about-heat-islands)](images/surface_temp.png){#fig-isla_nasa2 fig-align="center" width="600"} -->
+
+<!-- ::: -->
+
+<!-- ::: -->
+
+
+<!-- ## Causas y Efectos -->
+<!-- ::: columns -->
+
+<!-- ::: {.column  width="55%" .p_small} -->
+
+<!-- Geometría urbana: -->
+<!-- : Los edificios altos actúan como obstáculos y reducen el flujo del viento, lo que produciría efectos refrescantes.  -->
+
+<!-- Condiciones meteorológicas: -->
+<!-- : Las condiciones meteorológicas tranquilas y despejadas maximizan la cantidad de energía solar que llega a las superficies urbanas. Por el contrario, los vientos fuertes y la nubosidad suprimen la formación de islas de calor. -->
+
+<!-- Geografía: -->
+<!-- : Las grandes masas de agua pueden moderar la temperatura, mientras que las montañas cercanas pueden bloquear el viento o crear patrones de viento que atraviesen una ciudad. -->
+
+<!-- ::: -->
+<!-- ::: {.column width="5%"} -->
+<!-- ::: -->
+
+<!-- ::: {.column width="40%" .p_small} -->
+
+<!-- ![Land surface temperatures in cities, particularly densely-developed cities, tend to be elevated in comparison to surrounding areas. Credit: [NASA](https://www.nasa.gov/topics/earth/features/heat-island-sprawl.html)](images/temp_city.png){#fig-isla_nasa3 fig-align="center" width="600"} -->
+
+<!-- ::: -->
+
+<!-- ::: -->
+
+
+
+<!-- ## ¿Porqué es un problema? -->
+<!-- ::: columns -->
+
+<!-- ::: {.column  width="55%" .p_small} -->
+
+<!-- Mayor riesgo de mortalidad relacionadas con el calor: -->
+<!-- : Los niños, los ancianos y las personas con problemas de salud corren especial riesgo. Las altas temperaturas contribuyen a las dificultades respiratorias, los calambres y el agotamiento por calor, los golpes de calor no mortales y la mortalidad relacionada con el calor. -->
+
+<!-- <br> -->
+
+<!-- Aumento del consumo de energía: -->
+<!-- :  Durante los episodios de calor extremo aumenta la demanda de refrigeración y caso contrario de calefacción puede sobrecargar los sistemas y obligar a las compañías eléctricas a establecer apagones o caídas de tensión para evitar cortes de electricidad. -->
+
+<!-- ::: -->
+<!-- ::: {.column width="5%"} -->
+<!-- ::: -->
+
+<!-- ::: {.column width="40%" .p_small} -->
+
+<!-- ![Credit: [NIEHS](https://www.niehs.nih.gov/research/programs/geh/climatechange/health_impacts/heat/index.cfm)](images/problems_islas.png){fig-align="center" width="600"} -->
+
+<!-- ::: -->
+
+<!-- ::: -->
+
+
+
+<!-- ## {background-image="images/risk_sust.png" background-size="75%" background-position="center"} -->
+
+
+
+
+
+<!-- # Área de Estudio -->
+
+
+<!-- ## Ciudad de Guadalaja -->
+
+
+<!-- ::: columns -->
+
+<!-- ::: {.column  width="40%" .p_small} -->
+
+<!-- Guadalajara es una ciudad en el oeste de México. Es conocida por el tequila y la música mariachi, ambos nacidos en Jalisco, el estado del que Guadalajara es la capital. -->
+
+<!-- <br> -->
+
+<!-- <center>![](images/mexico_band.png){fig-align="center" width="150"} ![](images/Flag_of_Jalisco.svg.png){fig-align="center" width="150"}</center> -->
+
+<!-- </br> -->
+<!-- ::: -->
+
+<!-- ::: {.column  width="5%"} -->
+<!-- ::: -->
+<!-- ::: {.column  width="55%" .p_small} -->
+<!-- ![Ciudad de Guadalajara México](images/main-guadalajara.jpg){#fig-ciudad fig-align="center" width="1000"} -->
+<!-- ::: -->
+
+
+<!-- ::: -->
+
+
+<!-- ## Ciudad de Guadalaja -->
+
+<!-- ::: columns -->
+
+<!-- ::: {.column  width="45%" .p_small} -->
+
+<!-- Guadalajara se encuentra en el hemisferio norte (@fig-mex), y en una zona donde el clima se caracteriza una temporada de lluvia que es nublada, la temporada seca es parcialmente nublada y es caliente durante todo el año.  -->
+
+<!-- ```{r echo=FALSE} -->
+<!-- options(scipen = 999) -->
+<!-- tab <- data.table::data.table( -->
+<!--        Clima = c("Subtropical humedo"), -->
+<!--        Elevación = c("1,566 m"), -->
+<!--        Población =  c("1.38 millones (2020)") -->
+<!-- ) -->
+<!-- library(kableExtra) -->
+<!-- kbl(tab) %>%  kable_styling("hover", full_width = F, font_size = 14) -->
+<!-- ``` -->
+
+
+<!-- ::: -->
+
+<!-- ::: {.column  width="5%" .p_small} -->
+<!-- ::: -->
+
+<!-- ::: {.column  width="50%" .p_small} -->
+
+
+<!-- ![Guadalajara México, Hemisferio Norte](images/Mexico_and_Central_America.png){#fig-mex fig-align="center" width="300"} -->
+
+<!-- ::: -->
+
+
+<!-- ::: -->
+
+<!-- ## {background-image="images/Temperatura_guad.png" background-size="80%" background-position="center"} -->
+
+
+<!-- ## {background-image="images/Temperatura_promedio_hora.png" background-size="80%" background-position="center"} -->
+
+
+<!-- ## {background-video="videos/Guadalajara_zoom.mp4"} -->
+
+
+<!-- ## {background-video="videos/Guadalajara.mp4"} -->
+
+
+
+
+
+
+<!-- # Análisis -->
+
+<!-- ## IATA -->
+
+<!-- ::: columns -->
+
+<!-- ::: {.column  width="40%" .p_small} -->
+
+<!-- El indicador de Amplitud Térmica Anual (IATA) se refiere a la diferencia entre la Temperatura Superficial Terrestre (TST) máxima y mínima dentro de un año, Se calcula tal como se aprecia en la siguiente fórmula. -->
+
+<!-- $$IATA = TST_{ver}-TST_{inv}$$ -->
+<!-- ::: -->
+<!-- ::: {.column width="2%"} -->
+<!-- ::: -->
+
+<!-- ::: {.column width="58%" .p_small} -->
+
+<!-- ![Temperatura superficial del Terreno en Invierno verano](images/Temperatura_guad.png){#fig-temp_anual fig-align="center" width="600"} -->
+
+<!-- ::: -->
+
+<!-- ::: -->
+
+
+
+
+<!-- ## Temperatura Superficial del Territorio (TST) -->
+
+
+<!-- ::: columns -->
+
+<!-- ::: {.column  width="5%" .p_small} -->
+<!-- ::: -->
+
+<!-- ::: {.column  width="90%" .p_small} -->
+<!-- ![Diagrama de flujo de Cálculo de Temperatura Superficial del Territorio (TST)](images/TST_2.png){#fig-diagramaICV fig-align="center" width="800"} -->
+<!-- ::: -->
+
+<!-- ::: {.column  width="5%" .p_small} -->
+<!-- ::: -->
+
+<!-- ::: -->
+
+
+<!-- ## TST -->
+
+<!-- <center> -->
+<!-- ```{r fig.align='center'} -->
+<!-- knitr::include_url("html/ST_001/L9_TST.html", height = "500px") -->
+<!-- ``` -->
+<!-- </center> -->
+
+
+
+
+
+
+
+<!-- ## Indice de Amplitud Térmica (IATA) -->
+
+
+<!-- ::: columns -->
+
+<!-- ::: {.column  width="5%" .p_small} -->
+<!-- ::: -->
+
+<!-- ::: {.column  width="90%" .p_small} -->
+<!-- ![Diagrama de flujo de Cálculo de Índice de Amplitud Térmica](images/IATA.png){#fig-diagramaICV fig-align="center" width="800"} -->
+<!-- ::: -->
+
+<!-- ::: {.column  width="5%" .p_small} -->
+<!-- ::: -->
+
+<!-- ::: -->
+
+
+<!-- ## IATA -->
+
+<!-- <center> -->
+<!-- ```{r fig.align='center'} -->
+<!-- knitr::include_url("html/ST_001/L9_ATA.html", height = "500px") -->
+<!-- ``` -->
+<!-- </center> -->
+
+
+
+
+<!-- # Resultados -->
+
+
+<!-- ## IATA -->
+
+<!-- <center> -->
+<!-- ```{r fig.align='center'} -->
+<!-- knitr::include_url("html/ST_001/L9_IATA.html", height = "500px") -->
+<!-- ``` -->
+<!-- </center> -->
+
+
+<!-- ## Distribución de los Datos -->
+
+
+<!-- ::: columns -->
+
+<!-- ::: {.column  width="55%" .p_small} -->
+
+
+<!-- Los valores del indicador de amplitud térmica se distribuyen de forma normal, centrados en valores de 1.4º Celcius, lo que es bajo, lo cual se puede explicar porque la diferencia entre valores TST de inviernos en el 2023 fueron muy cercanos a los de Verano del mismo año. -->
+
+
+<!-- Otra cosa que pude explicar la baja amplitud térmica es la topografía por cuanto la ciudad no tiene grandes variaciones de elevación que pudieran afectar los flujos de aire en diferentes épocas del año. -->
+
+<!-- ::: -->
+<!-- ::: {.column width="5%"} -->
+<!-- ::: -->
+
+<!-- ::: {.column width="40%" .p_small} -->
+
+<!-- ![](images/IATA_2023.png){fig-align="center" width="600"} -->
+
+<!-- ::: -->
+
+<!-- ::: -->
+
+
+<!-- # Conclusiones -->
+
+<!-- ## Conclusiones y Trabajos -->
+
+
+<!-- ::: columns -->
+
+<!-- ::: {.column  width="55%" .p_small} -->
+
+<!-- Conclusiones Generales: -->
+<!-- : Los resultados que se presentaron corresponden a una versión preliminar, por cuanto el métodos es novedoso en términos de insumo satelital (Landsat 9), y se implementarón algoritmos de corrección de nubes desde 0. Además se debe validar los valores de TST con instrumentos en terreno de los mismos periodos y año. -->
+
+<!-- <br> -->
+
+<!-- Trabajos Futuros: -->
+<!-- : Complementar estos análisis con las denominadas Islas de Calor Urbanas (UHI) teniendo como referencia el estudio aplicado de la NASA llamado  _"Overview and Access of Land Surface Temperature (LST) for urban heat island (UHI)"_, publicado Mayo 2023.  -->
+
+
+<!-- ::: -->
+<!-- ::: {.column width="2%"} -->
+<!-- ::: -->
+
+<!-- ::: {.column width="43%" .p_small} -->
+
+<!-- ![](images/IATA_GD_2023.png){fig-align="center" width="600"} -->
+
+<!-- ::: -->
+
+<!-- ::: -->
+
+<!-- ## ¿Te sientes cómodo con las temperaturas que experimentas en tu hogar y en tu entorno? -->
+
+
+<!-- # Bibliografía -->
+
+<!-- ## -->
+
+<!-- **Referencias ** -->
+
+<!-- <br> -->
+
+<!-- ::: {#refs} -->
+<!-- ::: -->
+
+<!-- - [Overview and Access of Land Surface Temperature (LST), May, 2023](https://appliedsciences.nasa.gov/sites/default/files/2023-05/Day2_P5_Eng.pdf) -->
+
+<!-- - Datos de temperatura de [https://es.weatherspark.com](https://es.weatherspark.com/y/3866/Clima-promedio-en-Guadalajara-México-durante-todo-el-año) -->
+
+<!-- - ["Amenaza invisible": el aumento subterráneo de la temperatura afecta la infraestructura urbana](https://www.meteored.cl/noticias/ciencia/amenaza-invisible-el-aumento-subterraneo-de-la-temperatura-afecta-la-infraestructura-urbana.html) -->
+
+
