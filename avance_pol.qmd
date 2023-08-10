@@ -1,0 +1,434 @@
+---
+title: "Avance de Tesis: Sitio_021 y filtros"
+subtitle: "Sistema de Detección de Cambios en Cambios en Ambientes Naturales Protegidos utilizando CNN"
+# author: "Denis Berroeta"
+# date: "06-03-2023"
+bibliography: references.bib
+format:
+  revealjs:
+    footer: "Avances de Tesis - Denis Berroeta"
+    logo: "images/leaf.png"
+    preview-links: true
+    css: style/style.css
+    transition: slide
+    center: true
+    chalkboard: true
+    theme: default
+---
+
+# Agenda 
+
+## Agenda
+
+::: columns
+::: {.column  width="45%" .p_small}
+
+<br>
+
+-   Área de Estudio   
+-   Métodos Convencionales
+-   Conclusiones  
+-   Trabajos Futuros
+-   Bibliografía 
+:::
+
+::: {.column width="5%"}
+:::
+
+::: {.column width="50%" .p_small}
+
+![Turberas en Chile, Parque Karukinka 2022 © Barbara Saavedra](images/3-parque-karukinka-2022-barbara-saavedra.jpeg){fig-align="center" width="600"}
+
+:::
+:::
+
+
+
+# {background-image="images/diagrama_actual_2.png" background-size="75%" background-position="center"}
+
+
+##  RBG ST_021 
+
+
+<center>
+```{r fig.align='center'}
+knitr::include_url("html/ST_021/RGB_roi.html", height = "500px")
+```
+</center>
+
+
+##  SAR ST_021 
+
+
+<center>
+```{r fig.align='center'}
+knitr::include_url("html/ST_021/SAR_roi.html", height = "500px")
+```
+</center>
+
+
+
+
+# MC: Diferencia Directa (DD)
+
+## {background-image="images/slide_dd.png" background-size="75%" background-position="center"}
+
+
+
+## DD y Filtro filtro de la mediana ponderada $
+
+
+::: columns
+
+::: {.column  width="40%" .p_small}
+
+
+![Imagen de Diferencia Directa (DD)](images/ST_021/DD.png){ fig-align="center" width="500"}
+
+:::
+::: {.column width="20%" .p_small}
+
+$$\begin{bmatrix}
+1 & 2 & 1\\
+2 & 4 & 2\\
+1 & 2 & 1
+\end{bmatrix}$$
+
+
+:::
+
+::: {.column width="40%" .p_small}
+
+![Imagen de Diferencia Directa (DD)  con filtro kernel 3x3 aplicado. Filtro en el dominio del espacio: filtros no lineal [Fuente](http://alojamientos.us.es/gtocoma/pid/tema3-1.pdf)](images/ST_021/DD_1S_Fi.png){fig-align="center" width="500"}
+
+:::
+
+:::
+
+
+
+
+##  Diferencia Directa y Filtro (DD): ST_021
+
+
+<center>
+```{r fig.align='center'}
+knitr::include_url("html/ST_021/DD_roi.html", height = "500px")
+```
+</center>
+
+
+
+## DD: Segment Anything Model ([SAM](https://segment-anything.com)) 2 
+
+
+::: columns
+
+::: {.column  width="45%" .p_small}
+
+
+![Imagen de Diferencia Directa (DD) sin referencia espacial aplicado un kernel 3x3 con la función promedio](images/ST_021/ST_021_DD_1S_SAM.png){ fig-align="center" width="500"}
+
+:::
+::: {.column width="5%"}
+:::
+
+::: {.column width="45%" .p_small}
+
+![Imagen de Diferencia Directa (DD) kernel 3x3 promedio aplicado  SAM [@kirillov2023segment]](images/ST_021/ST_021_DD_1S_Fi_SAM.png){fig-align="center" width="500"}
+
+:::
+
+:::
+
+
+
+
+
+
+
+# MC: Log Ratio (LR)
+
+## {background-image="images/slide_lr.png" background-size="75%" background-position="center"}
+
+##  MC: Log Ratio (LR): ST_021
+
+
+<center>
+```{r fig.align='center'}
+knitr::include_url("html/ST_021/LR_roi.html", height = "500px")
+```
+</center>
+
+
+## LR: Segment Anything Model ([SAM](https://segment-anything.com)) 
+
+::: columns
+
+::: {.column  width="45%" .p_small}
+
+
+![Imagen de Log Ratio (LR) sin referencia espacial](images/ST_021/LR.png){ fig-align="center" width="500"}
+
+:::
+::: {.column width="5%"}
+:::
+
+::: {.column width="45%" .p_small}
+
+![Imagen de Log Ratio (LR) aplicado SAM [@kirillov2023segment]](images/ST_021/ST_021_LR_1S_SAM){fig-align="center" width="500"}
+
+:::
+
+:::
+
+
+# MC: Logarithmic Likelihood Ratio (LLR)
+
+## {background-image="images/slide_llr.png" background-size="75%" background-position="center"}
+
+##  MC: Logarithmic Likelihood Ratio (LLR): ST_021
+
+
+<center>
+```{r fig.align='center'}
+knitr::include_url("html/ST_021/LLR_roi.html", height = "500px")
+```
+</center>
+
+
+## LLR: Segment Anything Model ([SAM](https://segment-anything.com)) 
+
+::: columns
+
+::: {.column  width="45%" .p_small}
+
+
+![Imagen de Logarithmic Likelihood Ratio (LLR) sin referencia espacial](images/ST_021/LLR.png){ fig-align="center" width="500"}
+
+:::
+::: {.column width="5%"}
+:::
+
+::: {.column width="45%" .p_small}
+
+![Imagen de Logarithmic Likelihood Ratio (LLR) aplicado SAM [@kirillov2023segment]](images/ST_021/ST_021_LLR_1S_SAM.png){fig-align="center" width="500"}
+
+:::
+
+:::
+
+# MC: Enhanced Difference Image (EDI)
+
+## {background-image="images/slide_edi.png" background-size="75%" background-position="center"}
+
+##  MC: Enhanced Difference Image (EDI): ST_021 
+
+<center>
+```{r fig.align='center'}
+knitr::include_url("html/ST_021/EDI_roi.html", height = "500px")
+```
+</center>
+
+
+## EDI: Segment Anything Model ([SAM](https://segment-anything.com)) 
+
+::: columns
+
+::: {.column  width="45%" .p_small}
+
+
+![Imagen de Enhanced Difference Image (EDI) sin referencia espacial](images/ST_021/EDI.png){ fig-align="center" width="500"}
+
+:::
+::: {.column width="5%"}
+:::
+
+::: {.column width="45%" .p_small}
+
+![Imagen de Enhanced Difference Image (EDI) aplicado SAM [@kirillov2023segment]](images/ST_021/ST_021_EDI_1S_SAM.png){fig-align="center" width="500"}
+
+:::
+
+:::
+
+
+# MC: Log Mean Ratio (LMR)
+
+
+## {background-image="images/slide_lmr.png" background-size="75%" background-position="center"}
+
+##   MC: Log Mean Ratio (LMR): ST_021 
+
+<center>
+```{r fig.align='center'}
+knitr::include_url("html/ST_021/LMR_roi.html", height = "500px")
+```
+</center>
+
+
+## LMR: Segment Anything Model ([SAM](https://segment-anything.com)) 
+
+::: columns
+
+::: {.column  width="45%" .p_small}
+
+
+![Imagen de Log Mean Ratio (LMR) sin referencia espacial](images/ST_021/LMR.png){ fig-align="center" width="500"}
+
+:::
+::: {.column width="5%"}
+:::
+
+::: {.column width="45%" .p_small}
+
+![Imagen de Log Mean Ratio (LMR) aplicado SAM [@kirillov2023segment]](images/ST_021/ST_021_LMR_1S_SAM.png){fig-align="center" width="500"}
+
+:::
+
+:::
+
+
+# MC: Triangular Threshold Segmentation (Douglas-Peucker)
+
+
+## {background-image="images/slide_tts_dd.png" background-size="75%" background-position="center"}
+
+
+
+## ST_021: Triangular Threshold Segmentation DDI vs EDI vs LMR
+
+::: columns
+
+::: {.column  width="30%" .p_small}
+![Triangular Threshold Segmentation a imagen sobre DD con umbral de 56.61 ](images/ST_021/TTS_DD.tif){fig-align="center" width="500"}
+
+
+
+:::
+::: {.column width="30%" .p_small}
+![Triangular Threshold Segmentation a Enhanced Difference Image sobre EDI con umbral de 58.88](images/ST_021/TTS_EDI.tif){ fig-align="center" width="500"}
+:::
+
+::: {.column width="30%" .p_small}
+
+![Triangular Threshold Segmentation a Enhanced Difference Image sobre LMR con umbral de 45.09](images/ST_021/TTS_LMR.tif){ fig-align="center" width="500"}
+
+:::
+
+:::
+
+##  ST_021: Triangular Threshold Segmentation EDI vs DDI 
+
+<center>
+```{r fig.align='center'}
+knitr::include_url("html/ST_021/TTS_roi.html", height = "500px")
+```
+</center>
+
+
+
+
+
+
+<!-- # MC: PCA K-Means (PCAK) -->
+
+
+<!-- ## {background-image="images/slide_pcak.png" background-size="75%" background-position="center"} -->
+
+
+
+<!-- ## PCAK: Sobre todas las imágenes de diferencia -->
+
+<!-- ::: columns -->
+
+<!-- ::: {.column  width="25%" .p_small} -->
+
+
+<!-- ![Imagen de PCA K-Means (PCAK)  sobre  DD](images/ST_001/PCAK_DD.png){ fig-align="center" width="500"} -->
+
+<!-- ::: -->
+
+<!-- ::: {.column width="25%" .p_small} -->
+
+<!-- ![Imagen de PCA K-Means (PCAK) sobre  LLR](images/ST_001/PCAK_LLR.png){ fig-align="center" width="500"} -->
+<!-- ::: -->
+
+<!-- ::: {.column width="25%" .p_small} -->
+<!-- ![Imagen de PCA K-Means (PCAK) sobre EDI](images/ST_001/PCAK_EDI.png){ fig-align="center" width="500"} -->
+<!-- ::: -->
+
+
+<!-- ::: {.column width="25%" .p_small} -->
+
+<!-- ![Imagen de PCA K-Means (PCAK) sobre  LMR](images/ST_001/PCAK_LMR.png){ fig-align="center" width="500"} -->
+<!-- ::: -->
+<!-- ::: -->
+
+
+<!-- ##   MC: PCA K-Means Sobre EDI -->
+
+<!-- <center> -->
+<!-- ```{r fig.align='center'} -->
+<!-- knitr::include_url("html/ST_001/PCAK_EDI_roi.html", height = "500px") -->
+<!-- ``` -->
+<!-- </center> -->
+
+# Conclusiones
+
+
+::: columns
+::: {.column  width="50%" .p_small}
+
+-   Se implementó métodos convencionales en otra región de estudio, utilizando un resúmenes semestrales en la comparación, con resultado consecuentes con los cambions observado, y con foco en las turberas.
+-   Se avanzó en la introducción del documento de tesis siguiendo las recomendaciones y material sobre la estructura y gramática. [overleaf doc](https://www.overleaf.com/project/6372ee901feda57e8c03ab0a)
+
+:::
+
+::: {.column width="5%"}
+:::
+
+::: {.column width="45%" .p_small}
+
+![Tipo de Turbera en Chiloé, es dificil de diferenciar a simple vista. Estudio de Treimun 2016](images/turba_a.png){fig-align="center" width="600"}
+
+:::
+:::
+
+
+# Trabajos Futuros
+
+
+
+::: columns
+::: {.column  width="45%" .p_small}
+
+-   Escribir Estado del Arte (overleaf) 
+-   Utilizar MC con Información Satelital de DataCube
+-   definir Métricas por pixel 
+-   Diseñar e implementar flujo de trabajo (todas roi)
+-   Crear implemetación de [FastSAM](https://github.com/CASIA-IVA-Lab/FastSAM) [@zhao2023fast] espacial
+-   Implementar Métodología con Deep Learning 
+:::
+
+::: {.column width="5%"}
+:::
+
+::: {.column width="50%" .p_small}
+
+![](images/diagrama_actual.png){fig-align="center" width="600"}
+
+:::
+:::
+
+# Bibliografía 
+
+
+
+##
+
+<br>
+
+::: {#refs}
+:::
+

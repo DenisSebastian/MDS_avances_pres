@@ -22,7 +22,17 @@ source("R/log_mean_ratio.R")
 palette_grey <- grey(1:100/100)
 palette_rainbow <- rainbow(100)
 
+# Si no existe directorio lo crea
+make_dir <- function(path){
+  if (!dir.exists(path)){
+    print(paste0("Directorio Creado: ", path))
+    dir.create(path, recursive = TRUE)
+  }
+}
+
 make_map_web <- function(map, name, path_out, show=T){
+  make_dir(path_out)
+  
   path_out_html <- paste0(path_out, "/", name,".html") %>% 
     gsub(patter="//", replacement = "/", .)
   mapview::mapshot(map, url = path_out_html)
@@ -45,13 +55,28 @@ delete_black <- function(path_tif){
   return(img_rbg)
 }
 
-
 # Área de Estudio ---------------------------------------------------------
 
+SITIO <- "ST_021"
+suffix <- "_1S_Fi"
+suffix_null <- ""
+path_avence <- "../presentaciones/avance_tesis"
+path_html <- paste0(path_avence, "/html/", SITIO)
 
+plot(img1, col=palette_grey)
+# img1 <- focal(img1, fun = median, 
+# w = matrix(1, nrow = 3, ncol = 3))
+# plot(img1b, col=palette_grey)
+
+plot(img2, col=palette_grey)
+# img2 <- focal(img2, fun = median, 
+# w = matrix(1, nrow = 3, ncol = 3))
+
+
+# ViewRGB -----------------------------------------------------------------
 # RGB
-st_2017 <- delete_black("results/ST_001/ST_001-2017_reproy.tif")
-st_2022 <- delete_black("results/ST_001/ST_001-2022_reproy.tif")
+st_2017 <- delete_black(paste0("results/", SITIO, "/", SITIO,"_2017_RGB_reproy.tif"))
+st_2022 <- delete_black(paste0("results/", SITIO, "/", SITIO,"_2021_RGB_reproy.tif"))
 
 m_2017 <- viewRGB(st_2017, r = 1, g = 2, b = 3, layer.name = "RBG_2017",
                   na.color = "transparent", quantiles = NULL)
@@ -59,87 +84,117 @@ m_2022 <- viewRGB(st_2022, r = 1, g = 2, b = 3, layer.name = "RBG_2022",
                   na.color = "transparent", quantiles = NULL)
 
 rgb_img <- m_2017 + m_2022
-make_map_web(map = rgb_img, name = "RGB_roi", path_out = "results/ST_001/")
+make_map_web(map = rgb_img, name = "RGB_roi", path_out = path_html)
 
 
 # Radar -------------------------------------------------------------------
+# Insumos -----------------------------------------------------------------
+
+img1_vh <- raster(paste0("data/turberas/tif/", SITIO, "/S1_GRD_SAR_VH_1S_2017.tif"))
+img1_vv <- raster(paste0("data/turberas/tif/", SITIO, "/S1_GRD_SAR_VV_1S_2017.tif"))
+img2_vh <- raster(paste0("data/turberas/tif/",SITIO,  "/S1_GRD_SAR_VH_1S_2023.tif"))
+img2_vv <- raster(paste0("data/turberas/tif/",SITIO,  "/S1_GRD_SAR_VV_1S_2023.tif"))
+
+# img1 <- img1_vv+img1_vh
+# img2 <- img2_vv+img2_vh
+
+img1 <- img1_vh
+img2 <- img2_vh
 
 
-img1 <- raster("data/turberas/tif/ST_001/S1_GRD_SAR_VH_2017.tif")
-img2 <- raster("data/turberas/tif/ST_001/S1_GRD_SAR_VH_2023.tif")
 
-sar_map <- mapview(img1) + mapview(img2)
-make_map_web(map = sar_map, name = "SAR_roi", path_out = "results/ST_001/")
+sar_map <- mapview(img1_vh) + mapview(img2_vh)+ mapview(img1_vv) + mapview(img2_vv)
+make_map_web(map = sar_map, name = "SAR_roi", path_out = path_html)
 
 plot(img1, col=palette_grey)
 plot(img2, col=palette_grey)
 # 
 
 
-# ViewRGB -----------------------------------------------------------------
-st_2017 <- stack("results/ST_001/ST_001-2017_reproy.tif")
-st_2022 <- stack("results/ST_001/ST_001-2022_reproy.tif")
-m_2017 <- viewRGB(st_2017, r = 1, g = 2, b = 3)
-m_2022 <- viewRGB(st_2023, r = 1, g = 2, b = 3)
 
 
 # MC: Diferencia Directa --------------------------------------------------
-dd <- raster("results/ST_001/DD.tif")
-dd_th <- raster("results/ST_001/DD_PAD_GTE1.tif")
-dd_th[dd_th ==0] <- NA
-mdd_th <- mapview(dd_th, na.color =NA, alpha = 0.5, legend=F)
 
-map_dd <- rgb_img + mapview(dd)+mdd_th
-make_map_web(map = map_dd, name = "DD_roi", path_out = "results/ST_001/")
+
+name_image <- paste0("DD", suffix_null)
+dd <- raster(paste0("results/", SITIO,"/", name_image,".tif"))
+dd[dd ==0] <- NA
+mdd <- mapview(dd, na.color =NA, alpha = 0.8, legend=F)
+
+
+name_fil <- paste0("DD", suffix)
+dd_fil <- raster(paste0("results/", SITIO,"/", name_fil,".tif"))
+dd_fil[dd_fil ==0] <- NA
+mdd_fil <- mapview(dd_fil, na.color =NA, alpha = 0.8, legend=F)
+
+map_dd <- rgb_img + mdd+mdd_fil
+make_map_web(map = map_dd, name = "DD_roi", path_out = path_html)
 
 
 
 # Log Ratio ---------------------------------------------------------------
 
-lr <- raster("results/ST_001/DLR.tif")
+name_image <- paste0("LR", suffix_null)
+lr <- raster(paste0("results/", SITIO,"/", name_image,".tif"))
 
 map_lr <- rgb_img + mapview(lr)
-make_map_web(map = map_lr, name = "LR_roi", path_out = "results/ST_001/")
+make_map_web(map = map_lr, name = "LR_roi", path_out = path_html)
 
 
 
 # Relación de verosimilitud logarítmica (LLR) -----------------------------
 
 
-llr <- raster("results/ST_001/LLR.tif")
+name_image <- paste0("LLR", suffix_null)
+llr <- raster(paste0("results/", SITIO,"/", name_image,".tif"))
 
-map_llr <- rgb_img + mapview(llr)
-make_map_web(map = map_llr, name = "LLR_roi", path_out = "results/ST_001/")
+llr_cp <- llr
+llr_cp[llr_cp <0.05] <- NA
+
+
+map_llr <- rgb_img + mapview(llr) + mapview(llr_cp, na.color =NA, alpha = 0.8, legend=T)
+make_map_web(map = map_llr, name = "LLR_roi", path_out = path_html)
+
 
 
 # Enhanced Difference Image (EDI) -----------------------------------------
 
-edi <- raster("results/ST_001/EDI.tif")
-edi_out <- raster("results/ST_001/EDI_Outliers.tif")
+
+name_image <- paste0("EDI", suffix_null)
+edi <- raster(paste0("results/", SITIO,"/", name_image,".tif"))
+name_image_out <- paste0("EDI_Outliers", suffix_null)
+edi_out <- raster(paste0("results/", SITIO,"/", name_image_out,".tif"))
+
 
 map_edi <- rgb_img + mapview(edi)+mapview(edi_out,  na.color = NA)
-make_map_web(map = map_edi, name = "EDI_roi", path_out = "results/ST_001/")
-
-
-# MC: Triangular Threshold Segmentation (Douglas-Peucker) -----------------
-
-tts_edi <- raster("results/ST_001/TTS_EDI.tif")
-tts_dd <- raster("results/ST_001/TTS_DD.tif")
-
-map_tts <- rgb_img + mapview(tts_edi, na.color = NA,  col.regions ="yellow")+
-  mapview(tts_dd, na.color =NA, col.regions ="orange")
-make_map_web(map = map_tts, name = "TTS_roi", path_out = "results/ST_001/")
+make_map_web(map = map_edi, name = "EDI_roi", path_out = path_html)
 
 
 # Log Mean Ratio ----------------------------------------------------------
 
 
-lmr <- raster("results/ST_001/LMR.tif")
-lmr_th <- raster("results/ST_001/LMR_th.tif")
+name_image <- paste0("LMR", suffix_null)
+lmr <- raster(paste0("results/", SITIO,"/", name_image,".tif"))
 
-map_lmr <- rgb_img + mapview(lmr, na.color = NA)+ mapview(lmr_th, na.color = NA)
-make_map_web(map = map_lmr, name = "LMR_roi", path_out = "results/ST_001/")
+map_lmr <- rgb_img + mapview(lmr, na.color = NA)
+make_map_web(map = map_lmr, name = "LMR_roi", path_out = path_html)
 
+
+# MC: Triangular Threshold Segmentation (Douglas-Peucker) -----------------
+
+name_image_dd <- paste0("TTS_DD", suffix_null)
+tts_dd <- raster(paste0("results/", SITIO,"/", name_image_dd,".tif"))
+name_image <- paste0("TTS_EDI", suffix_null)
+tts_edi <- raster(paste0("results/", SITIO,"/", name_image,".tif"))
+name_image_lmr <- paste0("TTS_LMR", suffix_null)
+tts_lmr <- raster(paste0("results/", SITIO,"/", name_image_lmr,".tif"))
+
+
+map_tts <- rgb_img + 
+  mapview(tts_lmr, na.color =NA, col.regions ="magenta",  legend=F)+
+  mapview(tts_dd, na.color = NA,  col.regions ="cyan", legend=F)+
+  mapview(tts_edi, na.color = NA,  col.regions ="navy", legend=F)
+make_map_web(map = map_tts, name = "TTS_roi", path_out =path_html)
 
 
 #  PCA K-Means ------------------------------------------------------------

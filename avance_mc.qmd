@@ -23,9 +23,12 @@ format:
 ::: columns
 ::: {.column  width="45%" .p_small}
 
+<br>
+
 -   Introducción
 -   Área de Estudio   
 -   Métodos Convencionales
+-   Conclusiones  
 -   Trabajos Futuros
 -   Bibliografía 
 :::
