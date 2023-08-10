@@ -1,21 +1,21 @@
 <!DOCTYPE html>
 <html lang="en"><head>
-<script src="avance_mc_files/libs/clipboard/clipboard.min.js"></script>
-<script src="avance_mc_files/libs/quarto-html/tabby.min.js"></script>
-<script src="avance_mc_files/libs/quarto-html/popper.min.js"></script>
-<script src="avance_mc_files/libs/quarto-html/tippy.umd.min.js"></script>
-<link href="avance_mc_files/libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="avance_mc_files/libs/quarto-html/light-border.css" rel="stylesheet">
-<link href="avance_mc_files/libs/quarto-html/quarto-html.min.css" rel="stylesheet" data-mode="light">
-<link href="avance_mc_files/libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
+<script src="avance_pol_files/libs/clipboard/clipboard.min.js"></script>
+<script src="avance_pol_files/libs/quarto-html/tabby.min.js"></script>
+<script src="avance_pol_files/libs/quarto-html/popper.min.js"></script>
+<script src="avance_pol_files/libs/quarto-html/tippy.umd.min.js"></script>
+<link href="avance_pol_files/libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="avance_pol_files/libs/quarto-html/light-border.css" rel="stylesheet">
+<link href="avance_pol_files/libs/quarto-html/quarto-html.min.css" rel="stylesheet" data-mode="light">
+<link href="avance_pol_files/libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
   <meta name="generator" content="quarto-1.3.361">
 
-  <title>Avance de Tesis: Métodos Convencionales (2)</title>
+  <title>Avance de Tesis: Sitio_021 y filtros</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
-  <link rel="stylesheet" href="avance_mc_files/libs/revealjs/dist/reset.css">
-  <link rel="stylesheet" href="avance_mc_files/libs/revealjs/dist/reveal.css">
+  <link rel="stylesheet" href="avance_pol_files/libs/revealjs/dist/reset.css">
+  <link rel="stylesheet" href="avance_pol_files/libs/revealjs/dist/reveal.css">
   <style>
     code{white-space: pre-wrap;}
     span.smallcaps{font-variant: small-caps;}
@@ -48,14 +48,14 @@
     div.csl-indent {
       margin-left: 2em;
     }  </style>
-  <link rel="stylesheet" href="avance_mc_files/libs/revealjs/dist/theme/quarto.css">
+  <link rel="stylesheet" href="avance_pol_files/libs/revealjs/dist/theme/quarto.css">
   <link rel="stylesheet" href="style/style.css">
-  <link href="avance_mc_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
-  <link href="avance_mc_files/libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
-  <link href="avance_mc_files/libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
-  <link href="avance_mc_files/libs/revealjs/plugin/reveal-chalkboard/font-awesome/css/all.css" rel="stylesheet">
-  <link href="avance_mc_files/libs/revealjs/plugin/reveal-chalkboard/style.css" rel="stylesheet">
-  <link href="avance_mc_files/libs/revealjs/plugin/quarto-support/footer.css" rel="stylesheet">
+  <link href="avance_pol_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
+  <link href="avance_pol_files/libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
+  <link href="avance_pol_files/libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
+  <link href="avance_pol_files/libs/revealjs/plugin/reveal-chalkboard/font-awesome/css/all.css" rel="stylesheet">
+  <link href="avance_pol_files/libs/revealjs/plugin/reveal-chalkboard/style.css" rel="stylesheet">
+  <link href="avance_pol_files/libs/revealjs/plugin/quarto-support/footer.css" rel="stylesheet">
   <style type="text/css">
 
   .callout {
@@ -346,7 +346,7 @@
     <div class="slides">
 
 <section id="title-slide" class="quarto-title-block center">
-  <h1 class="title">Avance de Tesis: Métodos Convencionales (2)</h1>
+  <h1 class="title">Avance de Tesis: Sitio_021 y filtros</h1>
   <p class="subtitle">Sistema de Detección de Cambios en Cambios en Ambientes Naturales Protegidos utilizando CNN</p>
 
 <div class="quarto-title-authors">
@@ -362,11 +362,13 @@
 <h2>Agenda</h2>
 <div class="columns">
 <div class="column p_small" style="width:45%;">
+<p><br></p>
 <ul>
-<li>Introducción</li>
 <li>Área de Estudio<br>
 </li>
 <li>Métodos Convencionales</li>
+<li>Conclusiones<br>
+</li>
 <li>Trabajos Futuros</li>
 <li>Bibliografía</li>
 </ul>
@@ -383,132 +385,70 @@
 </div>
 </section></section>
 <section>
-<section id="introducción" class="title-slide slide level1 center">
-<h1>Introducción</h1>
+<section id="section" class="title-slide slide level1 center" data-background-image="images/diagrama_actual_2.png" data-background-size="75%" data-background-position="center">
+<h1></h1>
 
 </section>
-<section id="métodos-convecionales" class="slide level2 center">
-<h2>Métodos Convecionales</h2>
-<div class="columns">
-<div class="column p_small" style="width:50%;">
-<ul>
-<li>Diferencia Directa (DD)</li>
-<li>Log Ratio (LR)</li>
-<li>Logarithmic Likelihood Ratio (LLR)</li>
-<li>Enhanced Difference Image (EDI)</li>
-<li>Triangular Threshold Segmentation (Douglas-Peucker)</li>
-<li>Log Mean Ratio (LMR)</li>
-<li>PCA K-Means (PCAK)</li>
-</ul>
-</div><div class="column" style="width:2%;">
-
-</div><div class="column p_small" style="width:48%;">
-<div class="quarto-figure quarto-figure-center">
-<figure>
-<p><img data-src="images/mc_p1.png" width="600"></p>
-<figcaption>Experimentación de Métodos convencionales con muestras adquiridas en la provincia de Guizhou, China, por el sensor SAR COSMO-SkyMed</figcaption>
-</figure>
-</div>
-</div>
-</div>
-</section>
-<section id="section" class="slide level2 center" data-background-image="images/diagrama_actual.png" data-background-size="75%" data-background-position="center">
-<h2></h2>
-</section></section>
-<section>
-<section id="área-de-estudio-chiloé" class="title-slide slide level1 center">
-<h1>Área de Estudio: Chiloé</h1>
-
-</section>
-<section id="section-1" class="slide level2 center" data-background-image="images/areas_relevancia_tur.png" data-background-size="75%" data-background-position="center">
-<h2></h2>
-</section>
-<section id="rbg-st_001" class="slide level2 center">
-<h2>RBG ST_001</h2>
+<section id="rbg-st_021" class="slide level2 center">
+<h2>RBG ST_021</h2>
 <center>
 <div class="cell" data-layout-align="center">
-<iframe src="html/ST_001/RGB_roi.html" width="960" height="500px" data-external="1">
+<iframe src="html/ST_021/RGB_roi.html" width="960" height="500px" data-external="1">
 </iframe>
 </div>
 </center>
 </section>
-<section id="sar-st_001" class="slide level2 center">
-<h2>SAR ST_001</h2>
+<section id="sar-st_021" class="slide level2 center">
+<h2>SAR ST_021</h2>
 <center>
 <div class="cell" data-layout-align="center">
-<iframe src="html/ST_001/SAR_roi.html" width="960" height="500px" data-external="1">
+<iframe src="html/ST_021/SAR_roi.html" width="960" height="500px" data-external="1">
 </iframe>
 </div>
 </center>
-</section>
-<section id="turberas" class="slide level2 center">
-<h2>Turberas</h2>
-<div class="columns">
-<div class="column p_small" style="width:50%;">
-<p><br></p>
-<dl>
-<dt>Turberas:</dt>
-<dd>
-Son un tipo de humedal donde se produce y acumula progresivamente materia orgánica muerta que proviene de plantas adaptadas a vivir en sitios inundados de agua, con un bajo contenido de oxígeno y escasa disponibilidad de nutrientes.
-</dd>
-</dl>
-<p><br></p>
-<dl>
-<dt>Turba:</dt>
-<dd>
-La turba es materia orgánica muerta que ha sido formada en un lugar. Este material consta de 90 % de agua y 10% de restos de plantas (briófitos, líquenes, herbáceas de medios húmedos, entre otros)(CKPP, 2008).
-</dd>
-</dl>
-</div><div class="column" style="width:5%;">
-
-</div><div class="column p_small" style="width:45%;">
-<div id="fig-form_turb" class="quarto-figure quarto-figure-center">
-<figure>
-<p><img data-src="images/formacion_turbera1.jpg" width="400"></p>
-<figcaption>Figure&nbsp;1: Formación de la Turberas en Chiloé. Creditos: <a href="https://turberas.cl/turberas-generalidades/">https://turberas.cl</a></figcaption>
-</figure>
-</div>
-</div>
-</div>
 </section></section>
 <section>
 <section id="mc-diferencia-directa-dd" class="title-slide slide level1 center">
 <h1>MC: Diferencia Directa (DD)</h1>
 
 </section>
-<section id="section-2" class="slide level2 center" data-background-image="images/slide_dd.png" data-background-size="75%" data-background-position="center">
+<section id="section-1" class="slide level2 center" data-background-image="images/slide_dd.png" data-background-size="75%" data-background-position="center">
 <h2></h2>
 </section>
-<section id="diferencia-directa-dd-st_001" class="slide level2 center">
-<h2>Diferencia Directa (DD): ST_001</h2>
+<section id="dd-y-filtro-filtro-de-la-mediana-ponderada" class="slide level2 center">
+<h2>DD y Filtro filtro de la mediana ponderada $</h2>
+<div class="columns">
+<div class="column p_small" style="width:40%;">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="images/ST_021/DD.png" width="500"></p>
+<figcaption>Imagen de Diferencia Directa (DD)</figcaption>
+</figure>
+</div>
+</div><div class="column p_small" style="width:20%;">
+<p><span class="math display">\[\begin{bmatrix}
+1 &amp; 2 &amp; 1\\
+2 &amp; 4 &amp; 2\\
+1 &amp; 2 &amp; 1
+\end{bmatrix}\]</span></p>
+</div><div class="column p_small" style="width:40%;">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="images/ST_021/DD_1S_Fi.png" width="500"></p>
+<figcaption>Imagen de Diferencia Directa (DD) con filtro kernel 3x3 aplicado. Filtro en el dominio del espacio: filtros no lineal <a href="http://alojamientos.us.es/gtocoma/pid/tema3-1.pdf">Fuente</a></figcaption>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="diferencia-directa-y-filtro-dd-st_021" class="slide level2 center">
+<h2>Diferencia Directa y Filtro (DD): ST_021</h2>
 <center>
 <div class="cell" data-layout-align="center">
-<iframe src="html/ST_001/DD_roi.html" width="960" height="500px" data-external="1">
+<iframe src="html/ST_021/DD_roi.html" width="960" height="500px" data-external="1">
 </iframe>
 </div>
 </center>
-</section>
-<section id="dd-segment-anything-model-sam-1" class="slide level2 center">
-<h2>DD: Segment Anything Model (<a href="https://segment-anything.com">SAM</a>) 1</h2>
-<div class="columns">
-<div class="column p_small" style="width:45%;">
-<div class="quarto-figure quarto-figure-center">
-<figure>
-<p><img data-src="images/ST_001/DD_DN.png" width="500"></p>
-<figcaption>Imagen de Diferencia Directa (DD) sin referencia espacial</figcaption>
-</figure>
-</div>
-</div><div class="column" style="width:5%;">
-
-</div><div class="column p_small" style="width:45%;">
-<div class="quarto-figure quarto-figure-center">
-<figure>
-<p><img data-src="images/ST_001/DD_DN_SAM.png" width="500"></p>
-<figcaption>Imagen de Diferencia Directa (DD) aplicado SAM <span class="citation" data-cites="kirillov2023segment">(<a href="#/section-9" role="doc-biblioref" onclick="">Kirillov et al. 2023</a>)</span></figcaption>
-</figure>
-</div>
-</div>
-</div>
 </section>
 <section id="dd-segment-anything-model-sam-2" class="slide level2 center">
 <h2>DD: Segment Anything Model (<a href="https://segment-anything.com">SAM</a>) 2</h2>
@@ -516,7 +456,7 @@ La turba es materia orgánica muerta que ha sido formada en un lugar. Este mater
 <div class="column p_small" style="width:45%;">
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="images/ST_001/DD_PAD.png" width="500"></p>
+<p><img data-src="images/ST_021/ST_021_DD_1S_SAM.png" width="500"></p>
 <figcaption>Imagen de Diferencia Directa (DD) sin referencia espacial aplicado un kernel 3x3 con la función promedio</figcaption>
 </figure>
 </div>
@@ -525,8 +465,8 @@ La turba es materia orgánica muerta que ha sido formada en un lugar. Este mater
 </div><div class="column p_small" style="width:45%;">
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="images/ST_001/DD_PAD_SAM.png" width="500"></p>
-<figcaption>Imagen de Diferencia Directa (DD) kernel 3x3 promedio aplicado SAM <span class="citation" data-cites="kirillov2023segment">(<a href="#/section-9" role="doc-biblioref" onclick="">Kirillov et al. 2023</a>)</span></figcaption>
+<p><img data-src="images/ST_021/ST_021_DD_1S_Fi_SAM.png" width="500"></p>
+<figcaption>Imagen de Diferencia Directa (DD) kernel 3x3 promedio aplicado SAM <span class="citation" data-cites="kirillov2023segment">(<a href="#/section-7" role="doc-biblioref" onclick="">Kirillov et al. 2023</a>)</span></figcaption>
 </figure>
 </div>
 </div>
@@ -537,14 +477,14 @@ La turba es materia orgánica muerta que ha sido formada en un lugar. Este mater
 <h1>MC: Log Ratio (LR)</h1>
 
 </section>
-<section id="section-3" class="slide level2 center" data-background-image="images/slide_lr.png" data-background-size="75%" data-background-position="center">
+<section id="section-2" class="slide level2 center" data-background-image="images/slide_lr.png" data-background-size="75%" data-background-position="center">
 <h2></h2>
 </section>
-<section id="mc-log-ratio-lr-st_001" class="slide level2 center">
-<h2>MC: Log Ratio (LR): ST_001</h2>
+<section id="mc-log-ratio-lr-st_021" class="slide level2 center">
+<h2>MC: Log Ratio (LR): ST_021</h2>
 <center>
 <div class="cell" data-layout-align="center">
-<iframe src="html/ST_001/LR_roi.html" width="960" height="500px" data-external="1">
+<iframe src="html/ST_021/LR_roi.html" width="960" height="500px" data-external="1">
 </iframe>
 </div>
 </center>
@@ -555,7 +495,7 @@ La turba es materia orgánica muerta que ha sido formada en un lugar. Este mater
 <div class="column p_small" style="width:45%;">
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="images/ST_001/DLR.png" width="500"></p>
+<p><img data-src="images/ST_021/LR.png" width="500"></p>
 <figcaption>Imagen de Log Ratio (LR) sin referencia espacial</figcaption>
 </figure>
 </div>
@@ -564,8 +504,8 @@ La turba es materia orgánica muerta que ha sido formada en un lugar. Este mater
 </div><div class="column p_small" style="width:45%;">
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="images/ST_001/DLR_SAM.png" width="500"></p>
-<figcaption>Imagen de Log Ratio (LR) aplicado SAM <span class="citation" data-cites="kirillov2023segment">(<a href="#/section-9" role="doc-biblioref" onclick="">Kirillov et al. 2023</a>)</span></figcaption>
+<p><img data-src="images/ST_021/ST_021_LR_1S_SAM.png" width="500"></p>
+<figcaption>Imagen de Log Ratio (LR) aplicado SAM <span class="citation" data-cites="kirillov2023segment">(<a href="#/section-7" role="doc-biblioref" onclick="">Kirillov et al. 2023</a>)</span></figcaption>
 </figure>
 </div>
 </div>
@@ -576,14 +516,14 @@ La turba es materia orgánica muerta que ha sido formada en un lugar. Este mater
 <h1>MC: Logarithmic Likelihood Ratio (LLR)</h1>
 
 </section>
-<section id="section-4" class="slide level2 center" data-background-image="images/slide_llr.png" data-background-size="75%" data-background-position="center">
+<section id="section-3" class="slide level2 center" data-background-image="images/slide_llr.png" data-background-size="75%" data-background-position="center">
 <h2></h2>
 </section>
-<section id="mc-logarithmic-likelihood-ratio-llr-st_001" class="slide level2 center">
-<h2>MC: Logarithmic Likelihood Ratio (LLR): ST_001</h2>
+<section id="mc-logarithmic-likelihood-ratio-llr-st_021" class="slide level2 center">
+<h2>MC: Logarithmic Likelihood Ratio (LLR): ST_021</h2>
 <center>
 <div class="cell" data-layout-align="center">
-<iframe src="html/ST_001/LLR_roi.html" width="960" height="500px" data-external="1">
+<iframe src="html/ST_021/LLR_roi.html" width="960" height="500px" data-external="1">
 </iframe>
 </div>
 </center>
@@ -594,7 +534,7 @@ La turba es materia orgánica muerta que ha sido formada en un lugar. Este mater
 <div class="column p_small" style="width:45%;">
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="images/ST_001/LLR.png" width="500"></p>
+<p><img data-src="images/ST_021/LLR.png" width="500"></p>
 <figcaption>Imagen de Logarithmic Likelihood Ratio (LLR) sin referencia espacial</figcaption>
 </figure>
 </div>
@@ -603,8 +543,8 @@ La turba es materia orgánica muerta que ha sido formada en un lugar. Este mater
 </div><div class="column p_small" style="width:45%;">
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="images/ST_001/LLR_SAM.png" width="500"></p>
-<figcaption>Imagen de Logarithmic Likelihood Ratio (LLR) aplicado SAM <span class="citation" data-cites="kirillov2023segment">(<a href="#/section-9" role="doc-biblioref" onclick="">Kirillov et al. 2023</a>)</span></figcaption>
+<p><img data-src="images/ST_021/ST_021_LLR_1S_SAM.png" width="500"></p>
+<figcaption>Imagen de Logarithmic Likelihood Ratio (LLR) aplicado SAM <span class="citation" data-cites="kirillov2023segment">(<a href="#/section-7" role="doc-biblioref" onclick="">Kirillov et al. 2023</a>)</span></figcaption>
 </figure>
 </div>
 </div>
@@ -615,14 +555,14 @@ La turba es materia orgánica muerta que ha sido formada en un lugar. Este mater
 <h1>MC: Enhanced Difference Image (EDI)</h1>
 
 </section>
-<section id="section-5" class="slide level2 center" data-background-image="images/slide_edi.png" data-background-size="75%" data-background-position="center">
+<section id="section-4" class="slide level2 center" data-background-image="images/slide_edi.png" data-background-size="75%" data-background-position="center">
 <h2></h2>
 </section>
-<section id="mc-enhanced-difference-image-edi-st_001" class="slide level2 center">
-<h2>MC: Enhanced Difference Image (EDI): ST_001</h2>
+<section id="mc-enhanced-difference-image-edi-st_021" class="slide level2 center">
+<h2>MC: Enhanced Difference Image (EDI): ST_021</h2>
 <center>
 <div class="cell" data-layout-align="center">
-<iframe src="html/ST_001/EDI_roi.html" width="960" height="500px" data-external="1">
+<iframe src="html/ST_021/EDI_roi.html" width="960" height="500px" data-external="1">
 </iframe>
 </div>
 </center>
@@ -633,7 +573,7 @@ La turba es materia orgánica muerta que ha sido formada en un lugar. Este mater
 <div class="column p_small" style="width:45%;">
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="images/ST_001/EDI.png" width="500"></p>
+<p><img data-src="images/ST_021/EDI.png" width="500"></p>
 <figcaption>Imagen de Enhanced Difference Image (EDI) sin referencia espacial</figcaption>
 </figure>
 </div>
@@ -642,8 +582,47 @@ La turba es materia orgánica muerta que ha sido formada en un lugar. Este mater
 </div><div class="column p_small" style="width:45%;">
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="images/ST_001/EDI_SAM.png" width="500"></p>
-<figcaption>Imagen de Enhanced Difference Image (EDI) aplicado SAM <span class="citation" data-cites="kirillov2023segment">(<a href="#/section-9" role="doc-biblioref" onclick="">Kirillov et al. 2023</a>)</span></figcaption>
+<p><img data-src="images/ST_021/ST_021_EDI_1S_SAM.png" width="500"></p>
+<figcaption>Imagen de Enhanced Difference Image (EDI) aplicado SAM <span class="citation" data-cites="kirillov2023segment">(<a href="#/section-7" role="doc-biblioref" onclick="">Kirillov et al. 2023</a>)</span></figcaption>
+</figure>
+</div>
+</div>
+</div>
+</section></section>
+<section>
+<section id="mc-log-mean-ratio-lmr" class="title-slide slide level1 center">
+<h1>MC: Log Mean Ratio (LMR)</h1>
+
+</section>
+<section id="section-5" class="slide level2 center" data-background-image="images/slide_lmr.png" data-background-size="75%" data-background-position="center">
+<h2></h2>
+</section>
+<section id="mc-log-mean-ratio-lmr-st_021" class="slide level2 center">
+<h2>MC: Log Mean Ratio (LMR): ST_021</h2>
+<center>
+<div class="cell" data-layout-align="center">
+<iframe src="html/ST_021/LMR_roi.html" width="960" height="500px" data-external="1">
+</iframe>
+</div>
+</center>
+</section>
+<section id="lmr-segment-anything-model-sam" class="slide level2 center">
+<h2>LMR: Segment Anything Model (<a href="https://segment-anything.com">SAM</a>)</h2>
+<div class="columns">
+<div class="column p_small" style="width:45%;">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="images/ST_021/LMR.png" width="500"></p>
+<figcaption>Imagen de Log Mean Ratio (LMR) sin referencia espacial</figcaption>
+</figure>
+</div>
+</div><div class="column" style="width:5%;">
+
+</div><div class="column p_small" style="width:45%;">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="images/ST_021/ST_021_LMR_1S_SAM.png" width="500"></p>
+<figcaption>Imagen de Log Mean Ratio (LMR) aplicado SAM <span class="citation" data-cites="kirillov2023segment">(<a href="#/section-7" role="doc-biblioref" onclick="">Kirillov et al. 2023</a>)</span></figcaption>
 </figure>
 </div>
 </div>
@@ -657,125 +636,72 @@ La turba es materia orgánica muerta que ha sido formada en un lugar. Este mater
 <section id="section-6" class="slide level2 center" data-background-image="images/slide_tts_dd.png" data-background-size="75%" data-background-position="center">
 <h2></h2>
 </section>
-<section id="triangular-threshold-segmentation-edi-vs-ddi" class="slide level2 center">
-<h2>Triangular Threshold Segmentation EDI vs DDI</h2>
+<section id="st_021-triangular-threshold-segmentation-ddi-vs-edi-vs-lmr" class="slide level2 center">
+<h2>ST_021: Triangular Threshold Segmentation DDI vs EDI vs LMR</h2>
 <div class="columns">
-<div class="column p_small" style="width:45%;">
+<div class="column p_small" style="width:30%;">
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="images/ST_001/TTS_EDI.tif" width="500"></p>
-<figcaption>Aplicación de Triangular Threshold Segmentation a Enhanced Difference Image (EDI) con umbral de 77.6 dentro de un rango de 0 a 255</figcaption>
+<p><img data-src="images/ST_021/TTS_DD.tif" width="500"></p>
+<figcaption>Triangular Threshold Segmentation a imagen sobre DD con umbral de 56.61</figcaption>
 </figure>
 </div>
-</div><div class="column" style="width:5%;">
-
-</div><div class="column p_small" style="width:45%;">
+</div><div class="column p_small" style="width:30%;">
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="images/ST_001/TTS_DD.tif" width="500"></p>
-<figcaption>Aplicación de Triangular Threshold Segmentation a imagen de diferencia directa con umbral de 81.6 dentro de un rango de 0 a 255</figcaption>
+<p><img data-src="images/ST_021/TTS_EDI.tif" width="500"></p>
+<figcaption>Triangular Threshold Segmentation a Enhanced Difference Image sobre EDI con umbral de 58.88</figcaption>
+</figure>
+</div>
+</div><div class="column p_small" style="width:30%;">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="images/ST_021/TTS_LMR.tif" width="500"></p>
+<figcaption>Triangular Threshold Segmentation a Enhanced Difference Image sobre LMR con umbral de 45.09</figcaption>
 </figure>
 </div>
 </div>
 </div>
-</section></section>
-<section>
-<section id="mc-log-mean-ratio-lmr" class="title-slide slide level1 center">
-<h1>MC: Log Mean Ratio (LMR)</h1>
-
 </section>
-<section id="section-7" class="slide level2 center" data-background-image="images/slide_lmr.png" data-background-size="75%" data-background-position="center">
-<h2></h2>
-</section>
-<section id="mc-log-mean-ratio-lmr-st_001" class="slide level2 center">
-<h2>MC: Log Mean Ratio (LMR): ST_001</h2>
+<section id="st_021-triangular-threshold-segmentation-edi-vs-ddi" class="slide level2 center">
+<h2>ST_021: Triangular Threshold Segmentation EDI vs DDI</h2>
 <center>
 <div class="cell" data-layout-align="center">
-<iframe src="html/ST_001/LMR_roi.html" width="960" height="500px" data-external="1">
+<iframe src="html/ST_021/TTS_roi.html" width="960" height="500px" data-external="1">
 </iframe>
 </div>
 </center>
-</section>
-<section id="lmr-segment-anything-model-sam" class="slide level2 center">
-<h2>LMR: Segment Anything Model (<a href="https://segment-anything.com">SAM</a>)</h2>
-<div class="columns">
-<div class="column p_small" style="width:45%;">
-<div class="quarto-figure quarto-figure-center">
-<figure>
-<p><img data-src="images/ST_001/LMR.png" width="500"></p>
-<figcaption>Imagen de Log Mean Ratio (LMR) sin referencia espacial</figcaption>
-</figure>
-</div>
-</div><div class="column" style="width:5%;">
-
-</div><div class="column p_small" style="width:45%;">
-<div class="quarto-figure quarto-figure-center">
-<figure>
-<p><img data-src="images/ST_001/LMR_SAM.png" width="500"></p>
-<figcaption>Imagen de Log Mean Ratio (LMR) aplicado SAM <span class="citation" data-cites="kirillov2023segment">(<a href="#/section-9" role="doc-biblioref" onclick="">Kirillov et al. 2023</a>)</span></figcaption>
-</figure>
-</div>
-</div>
-</div>
-</section></section>
-<section>
-<section id="mc-pca-k-means-pcak" class="title-slide slide level1 center">
-<h1>MC: PCA K-Means (PCAK)</h1>
-
-</section>
-<section id="section-8" class="slide level2 center" data-background-image="images/slide_pcak.png" data-background-size="75%" data-background-position="center">
-<h2></h2>
-</section>
-<section id="pcak-sobre-todas-las-imágenes-de-diferencia" class="slide level2 center">
-<h2>PCAK: Sobre todas las imágenes de diferencia</h2>
-<div class="columns">
-<div class="column p_small" style="width:25%;">
-<div class="quarto-figure quarto-figure-center">
-<figure>
-<p><img data-src="images/ST_001/PCAK_DD.png" width="500"></p>
-<figcaption>Imagen de PCA K-Means (PCAK) sobre DD</figcaption>
-</figure>
-</div>
-</div><div class="column p_small" style="width:25%;">
-<div class="quarto-figure quarto-figure-center">
-<figure>
-<p><img data-src="images/ST_001/PCAK_LLR.png" width="500"></p>
-<figcaption>Imagen de PCA K-Means (PCAK) sobre LLR</figcaption>
-</figure>
-</div>
-</div><div class="column p_small" style="width:25%;">
-<div class="quarto-figure quarto-figure-center">
-<figure>
-<p><img data-src="images/ST_001/PCAK_EDI.png" width="500"></p>
-<figcaption>Imagen de PCA K-Means (PCAK) sobre EDI</figcaption>
-</figure>
-</div>
-</div><div class="column p_small" style="width:25%;">
-<div class="quarto-figure quarto-figure-center">
-<figure>
-<p><img data-src="images/ST_001/PCAK_LMR.png" width="500"></p>
-<figcaption>Imagen de PCA K-Means (PCAK) sobre LMR</figcaption>
-</figure>
-</div>
-</div>
-</div>
-</section>
-<section id="mc-pca-k-means-sobre-edi" class="slide level2 center">
-<h2>MC: PCA K-Means Sobre EDI</h2>
-<center>
-<div class="cell" data-layout-align="center">
-<iframe src="html/ST_001/PCAK_EDI_roi.html" width="960" height="500px" data-external="1">
-</iframe>
-</div>
-</center>
+<!-- # MC: PCA K-Means (PCAK) -->
+<!-- ## {background-image="images/slide_pcak.png" background-size="75%" background-position="center"} -->
+<!-- ## PCAK: Sobre todas las imágenes de diferencia -->
+<!-- ::: columns -->
+<!-- ::: {.column  width="25%" .p_small} -->
+<!-- ![Imagen de PCA K-Means (PCAK)  sobre  DD](images/ST_001/PCAK_DD.png){ fig-align="center" width="500"} -->
+<!-- ::: -->
+<!-- ::: {.column width="25%" .p_small} -->
+<!-- ![Imagen de PCA K-Means (PCAK) sobre  LLR](images/ST_001/PCAK_LLR.png){ fig-align="center" width="500"} -->
+<!-- ::: -->
+<!-- ::: {.column width="25%" .p_small} -->
+<!-- ![Imagen de PCA K-Means (PCAK) sobre EDI](images/ST_001/PCAK_EDI.png){ fig-align="center" width="500"} -->
+<!-- ::: -->
+<!-- ::: {.column width="25%" .p_small} -->
+<!-- ![Imagen de PCA K-Means (PCAK) sobre  LMR](images/ST_001/PCAK_LMR.png){ fig-align="center" width="500"} -->
+<!-- ::: -->
+<!-- ::: -->
+<!-- ##   MC: PCA K-Means Sobre EDI -->
+<!-- <center> -->
+<!-- ```{r fig.align='center'} -->
+<!-- knitr::include_url("html/ST_001/PCAK_EDI_roi.html", height = "500px") -->
+<!-- ``` -->
+<!-- </center> -->
 </section></section>
 <section id="conclusiones" class="title-slide slide level1 center">
 <h1>Conclusiones</h1>
 <div class="columns">
 <div class="column p_small" style="width:50%;">
 <ul>
-<li>Se experimentó 6 métodos convencionales de cáculo de diferencia de Imágenes Radar (SAR), destacando <em>Log Mean Ratio (LMR)</em>, <em>Enhanced Difference Image (EDI)</em> y especifíco su postproceso con <a href="https://segment-anything.com">SAM</a> e inclusive el método de <em>Diferencia Directa (DD)</em>.</li>
-<li>Los cambios generales que detecta de forma correcta los vegetación, ya sea deforestación o cultivos y edificaciones, pero en el sitio denominado Turberà ninguno de los métodos identificó de forma correcta.</li>
+<li>Se implementó métodos convencionales en otra región de estudio, utilizando un resúmenes semestrales en la comparación, con resultado consecuentes con los cambions observado, y con foco en las turberas.</li>
+<li>Se avanzó en la introducción del documento de tesis siguiendo las recomendaciones y material sobre la estructura y gramática. <a href="https://www.overleaf.com/project/6372ee901feda57e8c03ab0a">overleaf doc</a></li>
 </ul>
 </div><div class="column" style="width:5%;">
 
@@ -795,12 +721,12 @@ La turba es materia orgánica muerta que ha sido formada en un lugar. Este mater
 <div class="columns">
 <div class="column p_small" style="width:45%;">
 <ul>
-<li>Experimentar con otros áreas de estudio en Chiloé</li>
-<li>Experimentar con otros Ecosistemas</li>
-<li>Consolidad Métricas</li>
-<li>Crear implemetación de <a href="https://github.com/CASIA-IVA-Lab/FastSAM">FastSAM</a> <span class="citation" data-cites="zhao2023fast">(<a href="#/section-9" role="doc-biblioref" onclick="">Zhao et al. 2023</a>)</span> con data espacial</li>
-<li>Iterar por cada elemento de la serie de imágenes</li>
-<li>Documentar Avances</li>
+<li>Escribir Estado del Arte (overleaf)</li>
+<li>Utilizar MC con Información Satelital de DataCube</li>
+<li>definir Métricas por pixel</li>
+<li>Diseñar e implementar flujo de trabajo (todas roi)</li>
+<li>Crear implemetación de <a href="https://github.com/CASIA-IVA-Lab/FastSAM">FastSAM</a> <span class="citation" data-cites="zhao2023fast">(<a href="#/section-7" role="doc-biblioref" onclick="">Zhao et al. 2023</a>)</span> espacial</li>
+<li>Implementar Métodología con Deep Learning</li>
 </ul>
 </div><div class="column" style="width:5%;">
 
@@ -819,7 +745,7 @@ La turba es materia orgánica muerta que ha sido formada en un lugar. Este mater
 <h1>Bibliografía</h1>
 
 </section>
-<section id="section-9" class="slide level2 smaller scrollable">
+<section id="section-7" class="slide level2 smaller scrollable">
 <h2></h2>
 <p><br></p>
 <div id="refs" class="references csl-bib-body hanging-indent" role="list">
@@ -839,20 +765,20 @@ Zhao, Xu, Wenchao Ding, Yongqi An, Yinglong Du, Tao Yu, Min Li, Ming Tang, and J
   </div>
 
   <script>window.backupDefine = window.define; window.define = undefined;</script>
-  <script src="avance_mc_files/libs/revealjs/dist/reveal.js"></script>
+  <script src="avance_pol_files/libs/revealjs/dist/reveal.js"></script>
   <!-- reveal.js plugins -->
-  <script src="avance_mc_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.js"></script>
-  <script src="avance_mc_files/libs/revealjs/plugin/pdf-export/pdfexport.js"></script>
-  <script src="avance_mc_files/libs/revealjs/plugin/reveal-menu/menu.js"></script>
-  <script src="avance_mc_files/libs/revealjs/plugin/reveal-menu/quarto-menu.js"></script>
-  <script src="avance_mc_files/libs/revealjs/plugin/reveal-chalkboard/plugin.js"></script>
-  <script src="avance_mc_files/libs/revealjs/plugin/quarto-support/support.js"></script>
+  <script src="avance_pol_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.js"></script>
+  <script src="avance_pol_files/libs/revealjs/plugin/pdf-export/pdfexport.js"></script>
+  <script src="avance_pol_files/libs/revealjs/plugin/reveal-menu/menu.js"></script>
+  <script src="avance_pol_files/libs/revealjs/plugin/reveal-menu/quarto-menu.js"></script>
+  <script src="avance_pol_files/libs/revealjs/plugin/reveal-chalkboard/plugin.js"></script>
+  <script src="avance_pol_files/libs/revealjs/plugin/quarto-support/support.js"></script>
   
 
-  <script src="avance_mc_files/libs/revealjs/plugin/notes/notes.js"></script>
-  <script src="avance_mc_files/libs/revealjs/plugin/search/search.js"></script>
-  <script src="avance_mc_files/libs/revealjs/plugin/zoom/zoom.js"></script>
-  <script src="avance_mc_files/libs/revealjs/plugin/math/math.js"></script>
+  <script src="avance_pol_files/libs/revealjs/plugin/notes/notes.js"></script>
+  <script src="avance_pol_files/libs/revealjs/plugin/search/search.js"></script>
+  <script src="avance_pol_files/libs/revealjs/plugin/zoom/zoom.js"></script>
+  <script src="avance_pol_files/libs/revealjs/plugin/math/math.js"></script>
   <script>window.define = window.backupDefine; window.backupDefine = undefined;</script>
 
   <script>
