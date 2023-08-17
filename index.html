@@ -1,21 +1,21 @@
 <!DOCTYPE html>
 <html lang="en"><head>
-<script src="avance_pol_files/libs/clipboard/clipboard.min.js"></script>
-<script src="avance_pol_files/libs/quarto-html/tabby.min.js"></script>
-<script src="avance_pol_files/libs/quarto-html/popper.min.js"></script>
-<script src="avance_pol_files/libs/quarto-html/tippy.umd.min.js"></script>
-<link href="avance_pol_files/libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="avance_pol_files/libs/quarto-html/light-border.css" rel="stylesheet">
-<link href="avance_pol_files/libs/quarto-html/quarto-html.min.css" rel="stylesheet" data-mode="light">
-<link href="avance_pol_files/libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
+<script src="avance_04_DC_files/libs/clipboard/clipboard.min.js"></script>
+<script src="avance_04_DC_files/libs/quarto-html/tabby.min.js"></script>
+<script src="avance_04_DC_files/libs/quarto-html/popper.min.js"></script>
+<script src="avance_04_DC_files/libs/quarto-html/tippy.umd.min.js"></script>
+<link href="avance_04_DC_files/libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="avance_04_DC_files/libs/quarto-html/light-border.css" rel="stylesheet">
+<link href="avance_04_DC_files/libs/quarto-html/quarto-html.min.css" rel="stylesheet" data-mode="light">
+<link href="avance_04_DC_files/libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
   <meta name="generator" content="quarto-1.3.361">
 
-  <title>Avance de Tesis: Sitio_021 y filtros</title>
+  <title>Avance de Tesis: DataCube Explore</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
-  <link rel="stylesheet" href="avance_pol_files/libs/revealjs/dist/reset.css">
-  <link rel="stylesheet" href="avance_pol_files/libs/revealjs/dist/reveal.css">
+  <link rel="stylesheet" href="avance_04_DC_files/libs/revealjs/dist/reset.css">
+  <link rel="stylesheet" href="avance_04_DC_files/libs/revealjs/dist/reveal.css">
   <style>
     code{white-space: pre-wrap;}
     span.smallcaps{font-variant: small-caps;}
@@ -48,14 +48,14 @@
     div.csl-indent {
       margin-left: 2em;
     }  </style>
-  <link rel="stylesheet" href="avance_pol_files/libs/revealjs/dist/theme/quarto.css">
+  <link rel="stylesheet" href="avance_04_DC_files/libs/revealjs/dist/theme/quarto.css">
   <link rel="stylesheet" href="style/style.css">
-  <link href="avance_pol_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
-  <link href="avance_pol_files/libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
-  <link href="avance_pol_files/libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
-  <link href="avance_pol_files/libs/revealjs/plugin/reveal-chalkboard/font-awesome/css/all.css" rel="stylesheet">
-  <link href="avance_pol_files/libs/revealjs/plugin/reveal-chalkboard/style.css" rel="stylesheet">
-  <link href="avance_pol_files/libs/revealjs/plugin/quarto-support/footer.css" rel="stylesheet">
+  <link href="avance_04_DC_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
+  <link href="avance_04_DC_files/libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
+  <link href="avance_04_DC_files/libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
+  <link href="avance_04_DC_files/libs/revealjs/plugin/reveal-chalkboard/font-awesome/css/all.css" rel="stylesheet">
+  <link href="avance_04_DC_files/libs/revealjs/plugin/reveal-chalkboard/style.css" rel="stylesheet">
+  <link href="avance_04_DC_files/libs/revealjs/plugin/quarto-support/footer.css" rel="stylesheet">
   <style type="text/css">
 
   .callout {
@@ -346,7 +346,7 @@
     <div class="slides">
 
 <section id="title-slide" class="quarto-title-block center">
-  <h1 class="title">Avance de Tesis: Sitio_021 y filtros</h1>
+  <h1 class="title">Avance de Tesis: DataCube Explore</h1>
   <p class="subtitle">Sistema de Detección de Cambios en Cambios en Ambientes Naturales Protegidos utilizando CNN</p>
 
 <div class="quarto-title-authors">
@@ -364,6 +364,7 @@
 <div class="column p_small" style="width:45%;">
 <p><br></p>
 <ul>
+<li>Disponibilidad SAR DataCube</li>
 <li>Área de Estudio<br>
 </li>
 <li>Métodos Convencionales</li>
@@ -375,18 +376,187 @@
 </div><div class="column" style="width:5%;">
 
 </div><div class="column p_small" style="width:50%;">
+<p><br></p>
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="images/3-parque-karukinka-2022-barbara-saavedra.jpeg" width="600"></p>
-<figcaption>Turberas en Chile, Parque Karukinka 2022 © Barbara Saavedra</figcaption>
+<p><img data-src="images/logo_odc.png" width="400"></p>
 </figure>
 </div>
 </div>
 </div>
 </section></section>
-<section>
 <section id="section" class="title-slide slide level1 center" data-background-image="images/diagrama_actual_2.png" data-background-size="75%" data-background-position="center">
 <h1></h1>
+
+</section>
+
+<section>
+<section id="disponibilidad-sar-datacube" class="title-slide slide level1 center">
+<h1>Disponibilidad SAR DataCube</h1>
+
+</section>
+<section id="section-1" class="slide level2 center" data-background-image="images/infra_ODC.png" data-background-size="55%" data-background-position="center">
+<h2></h2>
+</section>
+<section id="data-cube-chile" class="slide level2 center">
+<h2>Data Cube Chile</h2>
+<div class="columns">
+<div class="column p_small" style="width:40%;">
+<p><strong>Objetivos</strong></p>
+<ul>
+<li><p>Explorar los datos tipo SAR del Satélite Sentinel-1 en la plataforma Data Cube Chile, además de su disponibilidad a la fecha de hoy (2023-08-17)</p></li>
+<li><p>Destacar la necesidad de actualización de los datos disponibles ya sea por tipo, corrección, fecha o región de estudio.</p></li>
+</ul>
+</div><div class="column" style="width:5%;">
+
+</div><div class="column p_small" style="width:55%;">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="images/data_cube_02.png" width="500"></p>
+<figcaption>Plataforma <a href="https://hub.datacubechile.cl/" class="uri">https://hub.datacubechile.cl/</a></figcaption>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="productos-sar-disponibles" class="slide level2 center">
+<h2>Productos SAR Disponibles</h2>
+<div class="columns">
+<div class="column p_small" style="width:30%;">
+<ul>
+<li><code>'asf_s1_grd_gamma0'</code></li>
+<li><code>'sentinel1_grd_gamma0'</code></li>
+<li><code>'asf_s1_rtc_grd_hd'</code></li>
+</ul>
+</div><div class="column" style="width:5%;">
+
+</div><div class="column p_small" style="width:65%;">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="images/dc_products_SAR.png" width="800"></p>
+<figcaption>Productos disponibles SAR en Data Cube</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="definición-de-parámetros" class="slide level2 center">
+<h2>Definición de Parámetros</h2>
+<div class="columns">
+<div class="column p_small" style="width:45%;">
+<p>Parámetros de la <em>query</em>:</p>
+<ul>
+<li><code>latitude = -42.21212</code></li>
+<li><code>longitude = -73.71519</code></li>
+<li><code>buffer = 0.01</code></li>
+<li><code>time = ("2016-01-01", "2023-12-31")</code></li>
+<li><code>bands = ['vv','vh','angle']</code></li>
+</ul>
+<p>Las coordenadas corresponden al centroide sitio <strong>ST_021</strong> de una tubera intervenida por acción humana se presentó la revisión anterior.</p>
+</div><div class="column" style="width:5%;">
+
+</div><div class="column p_small" style="width:50%;">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="images/roi_ST_021.png" width="800"></p>
+<figcaption>Región de estudio para exploración de datos disponibles</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="datos-asf_s1_grd_gamma0" class="slide level2 center">
+<h2>Datos <em>asf_s1_grd_gamma0</em></h2>
+<div class="columns">
+<div class="column p_small" style="width:45%;">
+<p>El producto satelital S1 <em>asf_s1_grd_gamma0</em> es el diponibiliza la mayor cantidad de imágenes en ese periodo y lugar, con un total de 338 registros.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="images/DataSet_asf_s1_grd_gamma0.png" width="800"></p>
+<figcaption>Dataset de Datos de asf_s1_grd_gamma0</figcaption>
+</figure>
+</div>
+</div><div class="column" style="width:5%;">
+
+</div><div class="column p_small" style="width:50%;">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="images/vis_asf_s1_grd_gamma0.png" width="800"></p>
+<figcaption>Visulización espacial de asf_s1_grd_gamma0</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="datos-sentinel1_grd_gamma0" class="slide level2 center">
+<h2>Datos <em>sentinel1_grd_gamma0</em></h2>
+<div class="columns">
+<div class="column p_small" style="width:45%;">
+<p>El producto <em>sentinel1_grd_gamma0</em> mantiene solo 4 registros de imágenes diponibles y todas del junio del 2023, como se observa a continuación:</p>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="images/Dataset_sentinel1_grd_gamma0.png" width="800"></p>
+<figcaption>Dataset de Datos de sentinel1_grd_gamma0 que mantiene 4 registros.</figcaption>
+</figure>
+</div>
+</div><div class="column" style="width:5%;">
+
+</div><div class="column p_small" style="width:50%;">
+<p><br></p>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="images/vis_sentinel1_grd_gamma0.png" width="800"></p>
+<figcaption>Visulización espacial de sentinel1_grd_gamma0</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="datos-asf_s1_rtc_grd_hd" class="slide level2 center">
+<h2>Datos <em>asf_s1_rtc_grd_hd</em></h2>
+<div class="columns">
+<div class="column p_small" style="width:45%;">
+<p>El producto satelital <em>asf_s1_rtc_grd_hd</em> <strong>no tiene</strong> registros de imágenes en el perodio y región de estudio</p>
+</div><div class="column" style="width:5%;">
+
+</div><div class="column p_small" style="width:50%;">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="images/Dataset_asf_s1_rtc_grd_hd.png" width="800"></p>
+<figcaption>Dataset de Datos de asf_s1_rtc_grd_hd que no mantiene registros.</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="resumen-de-data-cube" class="slide level2 center">
+<h2>Resumen de Data Cube</h2>
+<div class="columns">
+<div class="column p_small" style="width:50%;">
+<p><br></p>
+<ul>
+<li><strong>asf_s1_grd_gamma0</strong>: 338 imágenes entre 2016 y 2023</li>
+<li><strong>sentinel1_grd_gamma0</strong>: 4 imágenes de junio 2023</li>
+<li><strong>asf_s1_rtc_grd_hd</strong> : 0 imágenes</li>
+</ul>
+<p>Por lo anterior, se procedió analizar los métodos convencionales con los registros del producto satelital <code>asf_s1_grd_gamma0</code> en la región de estudio ST_021.</p>
+</div><div class="column" style="width:5%;">
+
+</div><div class="column p_small" style="width:45%;">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="images/logo_odc.png" width="400"></p>
+</figure>
+</div>
+<p><strong>Resolution</strong> : <code>16.5, 22.2  (x, y)</code></p>
+<p><strong>Range <span class="math inline">\(T_0\)</span></strong> : <code>0.00769, 0.05964  (min, max)</code></p>
+<p><strong>Range <span class="math inline">\(T_1\)</span></strong> : <code>0.00394, 0.19321  (min, max)</code></p>
+</div>
+</div>
+</section></section>
+<section>
+<section id="área-de-estudio" class="title-slide slide level1 center">
+<h1>Área de Estudio</h1>
 
 </section>
 <section id="rbg-st_021" class="slide level2 center">
@@ -400,274 +570,184 @@
 </section>
 <section id="sar-st_021" class="slide level2 center">
 <h2>SAR ST_021</h2>
+<p><br></p>
 <center>
 <div class="cell" data-layout-align="center">
-<iframe src="html/ST_021/SAR_roi.html" width="960" height="500px" data-external="1">
+<iframe src="html/ST_021/SAR_roi_sync.html" width="960" height="800px" data-external="1">
 </iframe>
 </div>
 </center>
 </section></section>
 <section>
-<section id="mc-diferencia-directa-dd" class="title-slide slide level1 center">
-<h1>MC: Diferencia Directa (DD)</h1>
+<section id="diferencia-directa-dd" class="title-slide slide level1 center">
+<h1>Diferencia Directa (DD)</h1>
 
 </section>
-<section id="section-1" class="slide level2 center" data-background-image="images/slide_dd.png" data-background-size="75%" data-background-position="center">
+<section id="section-2" class="slide level2 center" data-background-image="images/slide_dd.png" data-background-size="75%" data-background-position="center">
 <h2></h2>
 </section>
-<section id="dd-y-filtro-filtro-de-la-mediana-ponderada" class="slide level2 center">
-<h2>DD y Filtro filtro de la mediana ponderada $</h2>
-<div class="columns">
-<div class="column p_small" style="width:40%;">
-<div class="quarto-figure quarto-figure-center">
-<figure>
-<p><img data-src="images/ST_021/DD.png" width="500"></p>
-<figcaption>Imagen de Diferencia Directa (DD)</figcaption>
-</figure>
-</div>
-</div><div class="column p_small" style="width:20%;">
-<p><span class="math display">\[\begin{bmatrix}
-1 &amp; 2 &amp; 1\\
-2 &amp; 4 &amp; 2\\
-1 &amp; 2 &amp; 1
-\end{bmatrix}\]</span></p>
-</div><div class="column p_small" style="width:40%;">
-<div class="quarto-figure quarto-figure-center">
-<figure>
-<p><img data-src="images/ST_021/DD_1S_Fi.png" width="500"></p>
-<figcaption>Imagen de Diferencia Directa (DD) con filtro kernel 3x3 aplicado. Filtro en el dominio del espacio: filtros no lineal <a href="http://alojamientos.us.es/gtocoma/pid/tema3-1.pdf">Fuente</a></figcaption>
-</figure>
-</div>
-</div>
-</div>
-</section>
-<section id="diferencia-directa-y-filtro-dd-st_021" class="slide level2 center">
-<h2>Diferencia Directa y Filtro (DD): ST_021</h2>
+<section id="dd-st_021-diferencia-directa-gee-vs-open-data-cube" class="slide level2 center">
+<h2>DD ST_021: Diferencia Directa (GEE vs Open Data Cube)</h2>
+<p><br></p>
 <center>
 <div class="cell" data-layout-align="center">
-<iframe src="html/ST_021/DD_roi.html" width="960" height="500px" data-external="1">
+<iframe src="html/ST_021/DD_roi_sync.html" width="960" height="500px" data-external="1">
 </iframe>
 </div>
 </center>
-</section>
-<section id="dd-segment-anything-model-sam-2" class="slide level2 center">
-<h2>DD: Segment Anything Model (<a href="https://segment-anything.com">SAM</a>) 2</h2>
-<div class="columns">
-<div class="column p_small" style="width:45%;">
-<div class="quarto-figure quarto-figure-center">
-<figure>
-<p><img data-src="images/ST_021/ST_021_DD_1S_SAM.png" width="500"></p>
-<figcaption>Imagen de Diferencia Directa (DD) sin referencia espacial aplicado un kernel 3x3 con la función promedio</figcaption>
-</figure>
-</div>
-</div><div class="column" style="width:5%;">
-
-</div><div class="column p_small" style="width:45%;">
-<div class="quarto-figure quarto-figure-center">
-<figure>
-<p><img data-src="images/ST_021/ST_021_DD_1S_Fi_SAM.png" width="500"></p>
-<figcaption>Imagen de Diferencia Directa (DD) kernel 3x3 promedio aplicado SAM <span class="citation" data-cites="kirillov2023segment">(<a href="#/section-7" role="doc-biblioref" onclick="">Kirillov et al. 2023</a>)</span></figcaption>
-</figure>
-</div>
-</div>
-</div>
+<!-- ## DD: Segment Anything Model ([SAM](https://segment-anything.com)) 2  -->
+<!-- ::: columns -->
+<!-- ::: {.column  width="45%" .p_small} -->
+<!-- ![Imagen de Diferencia Directa (DD) sin referencia espacial aplicado un kernel 3x3 con la función promedio](images/ST_021/ST_021_DD_1S_SAM.png){ fig-align="center" width="500"} -->
+<!-- ::: -->
+<!-- ::: {.column width="5%"} -->
+<!-- ::: -->
+<!-- ::: {.column width="45%" .p_small} -->
+<!-- ![Imagen de Diferencia Directa (DD) kernel 3x3 promedio aplicado  SAM [@kirillov2023segment]](images/ST_021/ST_021_DD_1S_Fi_SAM.png){fig-align="center" width="500"} -->
+<!-- ::: -->
+<!-- ::: -->
 </section></section>
 <section>
 <section id="mc-log-ratio-lr" class="title-slide slide level1 center">
 <h1>MC: Log Ratio (LR)</h1>
 
 </section>
-<section id="section-2" class="slide level2 center" data-background-image="images/slide_lr.png" data-background-size="75%" data-background-position="center">
+<section id="section-3" class="slide level2 center" data-background-image="images/slide_lr.png" data-background-size="75%" data-background-position="center">
 <h2></h2>
 </section>
-<section id="mc-log-ratio-lr-st_021" class="slide level2 center">
-<h2>MC: Log Ratio (LR): ST_021</h2>
+<section id="lr-st_021-log-ratio-gee-vs-open-data-cube" class="slide level2 center">
+<h2>LR ST_021: Log Ratio (GEE vs Open Data Cube)</h2>
+<p><br></p>
 <center>
 <div class="cell" data-layout-align="center">
-<iframe src="html/ST_021/LR_roi.html" width="960" height="500px" data-external="1">
+<iframe src="html/ST_021/LR_roi_sync.html" width="960" height="500px" data-external="1">
 </iframe>
 </div>
 </center>
-</section>
-<section id="lr-segment-anything-model-sam" class="slide level2 center">
-<h2>LR: Segment Anything Model (<a href="https://segment-anything.com">SAM</a>)</h2>
-<div class="columns">
-<div class="column p_small" style="width:45%;">
-<div class="quarto-figure quarto-figure-center">
-<figure>
-<p><img data-src="images/ST_021/LR.png" width="500"></p>
-<figcaption>Imagen de Log Ratio (LR) sin referencia espacial</figcaption>
-</figure>
-</div>
-</div><div class="column" style="width:5%;">
-
-</div><div class="column p_small" style="width:45%;">
-<div class="quarto-figure quarto-figure-center">
-<figure>
-<p><img data-src="images/ST_021/ST_021_LR_1S_SAM.png" width="500"></p>
-<figcaption>Imagen de Log Ratio (LR) aplicado SAM <span class="citation" data-cites="kirillov2023segment">(<a href="#/section-7" role="doc-biblioref" onclick="">Kirillov et al. 2023</a>)</span></figcaption>
-</figure>
-</div>
-</div>
-</div>
+<!-- ## LR: Segment Anything Model ([SAM](https://segment-anything.com))  -->
+<!-- ::: columns -->
+<!-- ::: {.column  width="45%" .p_small} -->
+<!-- ![Imagen de Log Ratio (LR) sin referencia espacial](images/ST_021/LR.png){ fig-align="center" width="500"} -->
+<!-- ::: -->
+<!-- ::: {.column width="5%"} -->
+<!-- ::: -->
+<!-- ::: {.column width="45%" .p_small} -->
+<!-- ![Imagen de Log Ratio (LR) aplicado SAM [@kirillov2023segment]](images/ST_021/ST_021_LR_1S_SAM){fig-align="center" width="500"} -->
+<!-- ::: -->
+<!-- ::: -->
 </section></section>
 <section>
 <section id="mc-logarithmic-likelihood-ratio-llr" class="title-slide slide level1 center">
 <h1>MC: Logarithmic Likelihood Ratio (LLR)</h1>
 
 </section>
-<section id="section-3" class="slide level2 center" data-background-image="images/slide_llr.png" data-background-size="75%" data-background-position="center">
+<section id="section-4" class="slide level2 center" data-background-image="images/slide_llr.png" data-background-size="75%" data-background-position="center">
 <h2></h2>
 </section>
-<section id="mc-logarithmic-likelihood-ratio-llr-st_021" class="slide level2 center">
-<h2>MC: Logarithmic Likelihood Ratio (LLR): ST_021</h2>
+<section id="llr-st_021-logarithmic-likelihood-ratio-gee-vs-open-data-cube" class="slide level2 center">
+<h2>LLR ST_021: Logarithmic Likelihood Ratio (GEE vs Open Data Cube)</h2>
 <center>
 <div class="cell" data-layout-align="center">
-<iframe src="html/ST_021/LLR_roi.html" width="960" height="500px" data-external="1">
+<iframe src="html/ST_021/LLR_roi_sync.html" width="960" height="500px" data-external="1">
 </iframe>
 </div>
 </center>
-</section>
-<section id="llr-segment-anything-model-sam" class="slide level2 center">
-<h2>LLR: Segment Anything Model (<a href="https://segment-anything.com">SAM</a>)</h2>
-<div class="columns">
-<div class="column p_small" style="width:45%;">
-<div class="quarto-figure quarto-figure-center">
-<figure>
-<p><img data-src="images/ST_021/LLR.png" width="500"></p>
-<figcaption>Imagen de Logarithmic Likelihood Ratio (LLR) sin referencia espacial</figcaption>
-</figure>
-</div>
-</div><div class="column" style="width:5%;">
-
-</div><div class="column p_small" style="width:45%;">
-<div class="quarto-figure quarto-figure-center">
-<figure>
-<p><img data-src="images/ST_021/ST_021_LLR_1S_SAM.png" width="500"></p>
-<figcaption>Imagen de Logarithmic Likelihood Ratio (LLR) aplicado SAM <span class="citation" data-cites="kirillov2023segment">(<a href="#/section-7" role="doc-biblioref" onclick="">Kirillov et al. 2023</a>)</span></figcaption>
-</figure>
-</div>
-</div>
-</div>
+<!-- ## LLR: Segment Anything Model ([SAM](https://segment-anything.com))  -->
+<!-- ::: columns -->
+<!-- ::: {.column  width="45%" .p_small} -->
+<!-- ![Imagen de Logarithmic Likelihood Ratio (LLR) sin referencia espacial](images/ST_021/LLR.png){ fig-align="center" width="500"} -->
+<!-- ::: -->
+<!-- ::: {.column width="5%"} -->
+<!-- ::: -->
+<!-- ::: {.column width="45%" .p_small} -->
+<!-- ![Imagen de Logarithmic Likelihood Ratio (LLR) aplicado SAM [@kirillov2023segment]](images/ST_021/ST_021_LLR_1S_SAM.png){fig-align="center" width="500"} -->
+<!-- ::: -->
+<!-- ::: -->
 </section></section>
 <section>
 <section id="mc-enhanced-difference-image-edi" class="title-slide slide level1 center">
 <h1>MC: Enhanced Difference Image (EDI)</h1>
 
 </section>
-<section id="section-4" class="slide level2 center" data-background-image="images/slide_edi.png" data-background-size="75%" data-background-position="center">
+<section id="section-5" class="slide level2 center" data-background-image="images/slide_edi.png" data-background-size="75%" data-background-position="center">
 <h2></h2>
 </section>
-<section id="mc-enhanced-difference-image-edi-st_021" class="slide level2 center">
-<h2>MC: Enhanced Difference Image (EDI): ST_021</h2>
+<section id="edi-st_021-enhanced-difference-image-gee-vs-open-data-cube" class="slide level2 center">
+<h2>EDI ST_021: Enhanced Difference Image (GEE vs Open Data Cube)</h2>
+<p><br></p>
 <center>
 <div class="cell" data-layout-align="center">
-<iframe src="html/ST_021/EDI_roi.html" width="960" height="500px" data-external="1">
+<iframe src="html/ST_021/EDI_roi_sync.html" width="960" height="500px" data-external="1">
 </iframe>
 </div>
 </center>
-</section>
-<section id="edi-segment-anything-model-sam" class="slide level2 center">
-<h2>EDI: Segment Anything Model (<a href="https://segment-anything.com">SAM</a>)</h2>
-<div class="columns">
-<div class="column p_small" style="width:45%;">
-<div class="quarto-figure quarto-figure-center">
-<figure>
-<p><img data-src="images/ST_021/EDI.png" width="500"></p>
-<figcaption>Imagen de Enhanced Difference Image (EDI) sin referencia espacial</figcaption>
-</figure>
-</div>
-</div><div class="column" style="width:5%;">
-
-</div><div class="column p_small" style="width:45%;">
-<div class="quarto-figure quarto-figure-center">
-<figure>
-<p><img data-src="images/ST_021/ST_021_EDI_1S_SAM.png" width="500"></p>
-<figcaption>Imagen de Enhanced Difference Image (EDI) aplicado SAM <span class="citation" data-cites="kirillov2023segment">(<a href="#/section-7" role="doc-biblioref" onclick="">Kirillov et al. 2023</a>)</span></figcaption>
-</figure>
-</div>
-</div>
-</div>
+<!-- ## EDI: Segment Anything Model ([SAM](https://segment-anything.com))  -->
+<!-- ::: columns -->
+<!-- ::: {.column  width="45%" .p_small} -->
+<!-- ![Imagen de Enhanced Difference Image (EDI) sin referencia espacial](images/ST_021/EDI.png){ fig-align="center" width="500"} -->
+<!-- ::: -->
+<!-- ::: {.column width="5%"} -->
+<!-- ::: -->
+<!-- ::: {.column width="45%" .p_small} -->
+<!-- ![Imagen de Enhanced Difference Image (EDI) aplicado SAM [@kirillov2023segment]](images/ST_021/ST_021_EDI_1S_SAM.png){fig-align="center" width="500"} -->
+<!-- ::: -->
+<!-- ::: -->
 </section></section>
 <section>
 <section id="mc-log-mean-ratio-lmr" class="title-slide slide level1 center">
 <h1>MC: Log Mean Ratio (LMR)</h1>
 
 </section>
-<section id="section-5" class="slide level2 center" data-background-image="images/slide_lmr.png" data-background-size="75%" data-background-position="center">
+<section id="section-6" class="slide level2 center" data-background-image="images/slide_lmr.png" data-background-size="75%" data-background-position="center">
 <h2></h2>
 </section>
-<section id="mc-log-mean-ratio-lmr-st_021" class="slide level2 center">
-<h2>MC: Log Mean Ratio (LMR): ST_021</h2>
+<section id="lmr-st_021-log-mean-ratio-gee-vs-open-data-cube" class="slide level2 center">
+<h2>LMR ST_021: Log Mean Ratio (GEE vs Open Data Cube)</h2>
+<p><br></p>
 <center>
 <div class="cell" data-layout-align="center">
-<iframe src="html/ST_021/LMR_roi.html" width="960" height="500px" data-external="1">
+<iframe src="html/ST_021/LMR_roi_sync.html" width="960" height="500px" data-external="1">
 </iframe>
 </div>
 </center>
-</section>
-<section id="lmr-segment-anything-model-sam" class="slide level2 center">
-<h2>LMR: Segment Anything Model (<a href="https://segment-anything.com">SAM</a>)</h2>
-<div class="columns">
-<div class="column p_small" style="width:45%;">
-<div class="quarto-figure quarto-figure-center">
-<figure>
-<p><img data-src="images/ST_021/LMR.png" width="500"></p>
-<figcaption>Imagen de Log Mean Ratio (LMR) sin referencia espacial</figcaption>
-</figure>
-</div>
-</div><div class="column" style="width:5%;">
-
-</div><div class="column p_small" style="width:45%;">
-<div class="quarto-figure quarto-figure-center">
-<figure>
-<p><img data-src="images/ST_021/ST_021_LMR_1S_SAM.png" width="500"></p>
-<figcaption>Imagen de Log Mean Ratio (LMR) aplicado SAM <span class="citation" data-cites="kirillov2023segment">(<a href="#/section-7" role="doc-biblioref" onclick="">Kirillov et al. 2023</a>)</span></figcaption>
-</figure>
-</div>
-</div>
-</div>
+<!-- ## LMR: Segment Anything Model ([SAM](https://segment-anything.com))  -->
+<!-- ::: columns -->
+<!-- ::: {.column  width="45%" .p_small} -->
+<!-- ![Imagen de Log Mean Ratio (LMR) sin referencia espacial](images/ST_021/LMR.png){ fig-align="center" width="500"} -->
+<!-- ::: -->
+<!-- ::: {.column width="5%"} -->
+<!-- ::: -->
+<!-- ::: {.column width="45%" .p_small} -->
+<!-- ![Imagen de Log Mean Ratio (LMR) aplicado SAM [@kirillov2023segment]](images/ST_021/ST_021_LMR_1S_SAM.png){fig-align="center" width="500"} -->
+<!-- ::: -->
+<!-- ::: -->
 </section></section>
 <section>
 <section id="mc-triangular-threshold-segmentation-douglas-peucker" class="title-slide slide level1 center">
 <h1>MC: Triangular Threshold Segmentation (Douglas-Peucker)</h1>
 
 </section>
-<section id="section-6" class="slide level2 center" data-background-image="images/slide_tts_dd.png" data-background-size="75%" data-background-position="center">
+<section id="section-7" class="slide level2 center" data-background-image="images/slide_tts_dd.png" data-background-size="75%" data-background-position="center">
 <h2></h2>
+<!-- ## DDI,  EDI, LMR ST_021: Triangular Threshold Segmentation  -->
+<!-- ::: columns -->
+<!-- ::: {.column  width="30%" .p_small} -->
+<!-- ![Triangular Threshold Segmentation a imagen sobre DD con umbral de 56.61 ](images/ST_021/TTS_DD.tif){fig-align="center" width="500"} -->
+<!-- ::: -->
+<!-- ::: {.column width="30%" .p_small} -->
+<!-- ![Triangular Threshold Segmentation a Enhanced Difference Image sobre EDI con umbral de 58.88](images/ST_021/TTS_EDI.tif){ fig-align="center" width="500"} -->
+<!-- ::: -->
+<!-- ::: {.column width="30%" .p_small} -->
+<!-- ![Triangular Threshold Segmentation a Enhanced Difference Image sobre LMR con umbral de 45.09](images/ST_021/TTS_LMR.tif){ fig-align="center" width="500"} -->
+<!-- ::: -->
+<!-- ::: -->
 </section>
-<section id="st_021-triangular-threshold-segmentation-ddi-vs-edi-vs-lmr" class="slide level2 center">
-<h2>ST_021: Triangular Threshold Segmentation DDI vs EDI vs LMR</h2>
-<div class="columns">
-<div class="column p_small" style="width:30%;">
-<div class="quarto-figure quarto-figure-center">
-<figure>
-<p><img data-src="images/ST_021/TTS_DD.tif" width="500"></p>
-<figcaption>Triangular Threshold Segmentation a imagen sobre DD con umbral de 56.61</figcaption>
-</figure>
-</div>
-</div><div class="column p_small" style="width:30%;">
-<div class="quarto-figure quarto-figure-center">
-<figure>
-<p><img data-src="images/ST_021/TTS_EDI.tif" width="500"></p>
-<figcaption>Triangular Threshold Segmentation a Enhanced Difference Image sobre EDI con umbral de 58.88</figcaption>
-</figure>
-</div>
-</div><div class="column p_small" style="width:30%;">
-<div class="quarto-figure quarto-figure-center">
-<figure>
-<p><img data-src="images/ST_021/TTS_LMR.tif" width="500"></p>
-<figcaption>Triangular Threshold Segmentation a Enhanced Difference Image sobre LMR con umbral de 45.09</figcaption>
-</figure>
-</div>
-</div>
-</div>
-</section>
-<section id="st_021-triangular-threshold-segmentation-edi-vs-ddi" class="slide level2 center">
-<h2>ST_021: Triangular Threshold Segmentation EDI vs DDI</h2>
+<section id="ddi-edi-lmr-st_021-triangular-threshold-segmentation" class="slide level2 center">
+<h2>DDI, EDI, LMR ST_021: Triangular Threshold Segmentation</h2>
+<p><br></p>
 <center>
 <div class="cell" data-layout-align="center">
-<iframe src="html/ST_021/TTS_roi.html" width="960" height="500px" data-external="1">
+<iframe src="html/ST_021/TTS_roi_sync.html" width="960" height="500px" data-external="1">
 </iframe>
 </div>
 </center>
@@ -698,20 +778,13 @@
 <section id="conclusiones" class="title-slide slide level1 center">
 <h1>Conclusiones</h1>
 <div class="columns">
-<div class="column p_small" style="width:50%;">
-<ul>
-<li>Se implementó métodos convencionales en otra región de estudio, utilizando un resúmenes semestrales en la comparación, con resultado consecuentes con los cambions observado, y con foco en las turberas.</li>
-<li>Se avanzó en la introducción del documento de tesis siguiendo las recomendaciones y material sobre la estructura y gramática. <a href="https://www.overleaf.com/project/6372ee901feda57e8c03ab0a">overleaf doc</a></li>
-</ul>
+<div class="column p_small" style="width:55%;">
+<p>Se comparó los métodos convencionales de detección de cambios con dos fuentes de datos, de la plataforma de Google Earth Engine (raw) y desde la Plataforma de Open Data Cube con transformaciones.</p>
+<p>Se observó que los productos satelitales tipo SAR provenientes del Open Data Cube, resalta diferencias en menor medida que las imágenes provenientes de GEE.</p>
 </div><div class="column" style="width:5%;">
 
-</div><div class="column p_small" style="width:45%;">
-<div class="quarto-figure quarto-figure-center">
-<figure>
-<p><img data-src="images/turba_a.png" width="600"></p>
-<figcaption>Tipo de Turbera en Chiloé, es dificil de diferenciar a simple vista. Estudio de Treimun 2016</figcaption>
-</figure>
-</div>
+</div><div class="column p_small" style="width:40%;">
+<p><img data-src="images/logo_odc.png" data-fig-align="center" width="190"><img data-src="images/logo_GEE.png" data-fig-align="center" width="170"></p>
 </div>
 </div>
 </section>
@@ -721,19 +794,18 @@
 <div class="columns">
 <div class="column p_small" style="width:45%;">
 <ul>
-<li>Escribir Estado del Arte (overleaf)</li>
-<li>Utilizar MC con Información Satelital de DataCube</li>
-<li>definir Métricas por pixel</li>
+<li>Escribir Estado del Arte dentro de la introducción</li>
+<li>Investigar sobre las transformaciones y/o correcciones ODC</li>
+<li>Definir Métricas por pixel</li>
+<li>Crear implemetación de <a href="https://github.com/CASIA-IVA-Lab/FastSAM">FastSAM</a> <span class="citation" data-cites="zhao2023fast">(<a href="#/section-8" role="doc-biblioref" onclick="">Zhao et al. 2023</a>)</span> espacial - En progreso</li>
 <li>Diseñar e implementar flujo de trabajo (todas roi)</li>
-<li>Crear implemetación de <a href="https://github.com/CASIA-IVA-Lab/FastSAM">FastSAM</a> <span class="citation" data-cites="zhao2023fast">(<a href="#/section-7" role="doc-biblioref" onclick="">Zhao et al. 2023</a>)</span> espacial</li>
-<li>Implementar Métodología con Deep Learning</li>
 </ul>
 </div><div class="column" style="width:5%;">
 
 </div><div class="column p_small" style="width:50%;">
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="images/diagrama_actual.png" width="600"></p>
+<p><img data-src="images/diagrama_actual_2.png" width="600"></p>
 </figure>
 </div>
 </div>
@@ -745,40 +817,37 @@
 <h1>Bibliografía</h1>
 
 </section>
-<section id="section-7" class="slide level2 smaller scrollable">
+<section id="section-8" class="slide level2 smaller scrollable">
 <h2></h2>
 <p><br></p>
 <div id="refs" class="references csl-bib-body hanging-indent" role="list">
-<div id="ref-kirillov2023segment" class="csl-entry" role="listitem">
-Kirillov, Alexander, Eric Mintun, Nikhila Ravi, Hanzi Mao, Chloe Rolland, Laura Gustafson, Tete Xiao, et al. 2023. <span>“Segment Anything.”</span> <a href="https://arxiv.org/abs/2304.02643">https://arxiv.org/abs/2304.02643</a>.
-</div>
 <div id="ref-zhao2023fast" class="csl-entry" role="listitem">
 Zhao, Xu, Wenchao Ding, Yongqi An, Yinglong Du, Tao Yu, Min Li, Ming Tang, and Jinqiao Wang. 2023. <span>“Fast Segment Anything.”</span> <a href="https://arxiv.org/abs/2306.12156">https://arxiv.org/abs/2306.12156</a>.
 </div>
 </div>
 
-<img src="images/leaf.png" class="slide-logo r-stretch"><div class="footer footer-default">
-<p>Avances de Tesis - Denis Berroeta</p>
+<img src="images/logo_open_datacube.png" class="slide-logo r-stretch"><div class="footer footer-default">
+<p>Avances de Tesis 04 - Denis Berroeta</p>
 </div>
 </section></section>
     </div>
   </div>
 
   <script>window.backupDefine = window.define; window.define = undefined;</script>
-  <script src="avance_pol_files/libs/revealjs/dist/reveal.js"></script>
+  <script src="avance_04_DC_files/libs/revealjs/dist/reveal.js"></script>
   <!-- reveal.js plugins -->
-  <script src="avance_pol_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.js"></script>
-  <script src="avance_pol_files/libs/revealjs/plugin/pdf-export/pdfexport.js"></script>
-  <script src="avance_pol_files/libs/revealjs/plugin/reveal-menu/menu.js"></script>
-  <script src="avance_pol_files/libs/revealjs/plugin/reveal-menu/quarto-menu.js"></script>
-  <script src="avance_pol_files/libs/revealjs/plugin/reveal-chalkboard/plugin.js"></script>
-  <script src="avance_pol_files/libs/revealjs/plugin/quarto-support/support.js"></script>
+  <script src="avance_04_DC_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.js"></script>
+  <script src="avance_04_DC_files/libs/revealjs/plugin/pdf-export/pdfexport.js"></script>
+  <script src="avance_04_DC_files/libs/revealjs/plugin/reveal-menu/menu.js"></script>
+  <script src="avance_04_DC_files/libs/revealjs/plugin/reveal-menu/quarto-menu.js"></script>
+  <script src="avance_04_DC_files/libs/revealjs/plugin/reveal-chalkboard/plugin.js"></script>
+  <script src="avance_04_DC_files/libs/revealjs/plugin/quarto-support/support.js"></script>
   
 
-  <script src="avance_pol_files/libs/revealjs/plugin/notes/notes.js"></script>
-  <script src="avance_pol_files/libs/revealjs/plugin/search/search.js"></script>
-  <script src="avance_pol_files/libs/revealjs/plugin/zoom/zoom.js"></script>
-  <script src="avance_pol_files/libs/revealjs/plugin/math/math.js"></script>
+  <script src="avance_04_DC_files/libs/revealjs/plugin/notes/notes.js"></script>
+  <script src="avance_04_DC_files/libs/revealjs/plugin/search/search.js"></script>
+  <script src="avance_04_DC_files/libs/revealjs/plugin/zoom/zoom.js"></script>
+  <script src="avance_04_DC_files/libs/revealjs/plugin/math/math.js"></script>
   <script>window.define = window.backupDefine; window.backupDefine = undefined;</script>
 
   <script>
