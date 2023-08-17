@@ -58,19 +58,11 @@ delete_black <- function(path_tif){
 # Área de Estudio ---------------------------------------------------------
 
 SITIO <- "ST_021"
-suffix <- "_1S_Fi"
+suffix <- "_ODC"
 suffix_null <- ""
 path_avence <- "../presentaciones/avance_tesis"
 path_html <- paste0(path_avence, "/html/", SITIO)
 
-plot(img1, col=palette_grey)
-# img1 <- focal(img1, fun = median, 
-# w = matrix(1, nrow = 3, ncol = 3))
-# plot(img1b, col=palette_grey)
-
-plot(img2, col=palette_grey)
-# img2 <- focal(img2, fun = median, 
-# w = matrix(1, nrow = 3, ncol = 3))
 
 
 # ViewRGB -----------------------------------------------------------------
@@ -98,19 +90,16 @@ img2_vv <- raster(paste0("data/turberas/tif/",SITIO,  "/S1_GRD_SAR_VV_1S_2023.ti
 # img1 <- img1_vv+img1_vh
 # img2 <- img2_vv+img2_vh
 
-img1 <- img1_vh
-img2 <- img2_vh
+
+# img1 <- img1_vh
+# img2 <- img2_vh
 
 
+sar_map <- rgb_img + 
+  mapview(img1_vh, layer.name = "img1_vh_gee") + 
+  mapview(img2_vh, layer.name = "img2_vh_gee") + 
 
-sar_map <- mapview(img1_vh) + mapview(img2_vh)+ mapview(img1_vv) + mapview(img2_vv)
 make_map_web(map = sar_map, name = "SAR_roi", path_out = path_html)
-
-plot(img1, col=palette_grey)
-plot(img2, col=palette_grey)
-# 
-
-
 
 
 # MC: Diferencia Directa --------------------------------------------------

@@ -6,7 +6,7 @@ subtitle: "Sistema de Detección de Cambios en Cambios en Ambientes Naturales Pr
 bibliography: references.bib
 format:
   revealjs:
-    footer: "Avances de Tesis - Denis Berroeta"
+    footer: "Avances de Tesis 02 - Denis Berroeta"
     logo: "images/leaf.png"
     preview-links: true
     css: style/style.css

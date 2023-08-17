@@ -6,7 +6,7 @@ subtitle: "Sistema de Detección de Cambios en Cambios en Ambientes Naturales Pr
 bibliography: references.bib
 format:
   revealjs:
-    footer: "Avances de Tesis - Denis Berroeta"
+    footer: "Avances de Tesis 03 - Denis Berroeta"
     logo: "images/leaf.png"
     preview-links: true
     css: style/style.css
@@ -416,7 +416,7 @@ knitr::include_url("html/ST_021/TTS_roi.html", height = "500px")
 
 ::: {.column width="50%" .p_small}
 
-![](images/diagrama_actual.png){fig-align="center" width="600"}
+![](images/diagrama_actual_2.png){fig-align="center" width="600"}
 
 :::
 :::
