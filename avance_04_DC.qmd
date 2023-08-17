@@ -1,5 +1,5 @@
 ---
-title: "Avance de Tesis: DataCube Explore"
+title: "Avance de Tesis: Data Cube Explore"
 subtitle: "Sistema de Detección de Cambios en Cambios en Ambientes Naturales Protegidos utilizando CNN"
 # author: "Denis Berroeta"
 # date: "06-03-2023"
