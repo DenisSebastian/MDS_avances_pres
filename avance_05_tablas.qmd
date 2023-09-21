@@ -1,0 +1,379 @@
+---
+title: "Avance de Tesis: Tabla de Diferencias"
+subtitle: "Sistema de Detección de Cambios en Cambios en Ambientes Naturales Protegidos utilizando CNN"
+# author: "Denis Berroeta"
+# date: "06-03-2023"
+bibliography: references.bib
+format:
+  revealjs:
+    footer: "Avances de Tesis 05 - Denis Berroeta"
+    logo: "images/arrow.png"
+    preview-links: true
+    css: style/style.css
+    transition: slide
+    center: true
+    chalkboard: true
+    theme: default
+editor_options: 
+  chunk_output_type: console
+---
+
+# Agenda 
+
+## Agenda
+
+::: columns
+::: {.column  width="45%" .p_small}
+
+<br>
+
+-   Creación de Dataset Vectorial
+-   Extración de Imagen SAR por Sitio  
+-   Cálculo de Diferencias con Métodos Convencionales
+-   Tablas Resúmenes  
+-   Trabajos Futuros
+-   Bibliografía 
+:::
+
+::: {.column width="5%"}
+:::
+
+::: {.column width="50%" .p_small}
+
+
+![](images/sitios_all.png){fig-align="center" width="330"}
+
+:::
+:::
+
+
+
+# {background-image="images/diagrama_actual_2.png" background-size="75%" background-position="center"}
+
+
+# Creación de Dataset Vectorial
+
+## Creación de Dataset Vectorial
+
+::: columns
+
+::: {.column  width="40%" .p_small}
+
+
+<br>
+<br>
+
+- Todos los Polígonos (831) del MMA se le sustrajo los polínos de cambio (27).
+- Se agrupó por ID, generando multipolígonos en los casos que la substracción divida un polígono.
+
+![](images/erase_feature.png){fig-align="center" width="200"}
+
+
+
+:::
+::: {.column width="5%"}
+:::
+
+::: {.column width="55%" .p_small}
+
+<br>
+
+![](images/diference.png){fig-align="center" width="400"}
+
+:::
+:::
+
+
+
+# Extración de Imagen SAR por Sitio  
+
+##
+::: columns
+
+::: {.column  width="40%" .p_small}
+
+<br>
+
+
+<br>
+
+## Extración de Imagen SAR por Sitio  
+
+- Extracción se hizo por comunas de la provincia de Chiloé
+- Se realizó de forma masiva utilizando GEE
+- Quedando una carpeta por cada sitio 
+
+
+:::
+::: {.column width="5%"}
+:::
+
+::: {.column width="55%" .p_small}
+
+<br>
+
+![](images/logo_GEE.png){fig-align="center" width="150"}
+
+
+![](images/folders_sitios.png){fig-align="center" width="300"}
+
+:::
+:::
+
+
+
+# Cálculo de Diferencias con Métodos Convencionales
+
+
+## {background-image="images/MC_all.png" background-size="80%" background-position="center"}
+
+
+
+##
+::: columns
+
+::: {.column  width="40%" .p_small}
+<br>
+
+
+<br>
+
+## Cálculo de Diferencias con Métodos Convencionales 
+
+- Se calculó los MC de forma iterativa
+- Resultados por cada sitio  (858)
+
+
+
+:::
+::: {.column width="5%"}
+:::
+
+::: {.column width="55%" .p_small}
+
+<br>
+
+![](images/MC_folders.png){fig-align="center" width="200"}
+
+:::
+:::
+
+
+
+
+# Resultados
+
+##
+::: columns
+
+::: {.column  width="40%" .p_small}
+
+### Métricas por Pixel
+
+- Se utilizó el contabilizar los pixeles de cambio y obtener un proporción respecto al total.
+- Se espera que los sitios de cambios tenga los valores de diferencia más altos.
+- Se aplicó para cada Sitio
+
+:::
+::: {.column width="5%"}
+:::
+
+::: {.column width="55%" .p_small}
+
+<br>
+
+$$MC = \frac{Suma \ valor \ cambio}{Total\ pixeles} \times100$$
+
+:::
+:::
+
+
+##
+
+
+
+::: {.panel-tabset .p_small}
+
+### Tabla de Resultados
+
+```{r echo=FALSE, warning=FALSE, message=FALSE}
+library(tidyverse)
+library(DT)
+
+tab_gral <- readRDS("results/tabs/MC_clipped_tab.rds") %>% 
+  mutate_if(is.numeric, round, 2) 
+  
+datatable(tab_gral, class = 'cell-border stripe',  rownames = FALSE,
+          filter = 'top', options = list(pageLength = 10, 
+                                         autoWidth = FALSE))%>%
+  DT::formatStyle(columns = colnames(.),  fontSize = '10px')
+```
+
+### Boxplot
+
+<center>
+![](images/clipped_box_plot_mean.png){fig-align="center" width="800"}
+</center>
+
+### Gráfico Dinámico { .p_small}
+
+<center>
+```{r echo=FALSE, warning=FALSE, message=FALSE, fig.height=4, fig.align='center'}
+library(plotly)
+library(viridis)
+
+table_longer <- tab_gral %>%
+  pivot_longer(cols = DD:DD_pad_mean, names_to = "method", values_to = "values") %>%
+  filter(!method %in% c("DD_pad_mean", "DD_denoised")) %>%
+  mutate(change = as.factor(change))
+
+p2 <- ggplot(data = table_longer,
+       mapping = aes(x = method, y = values, fill = change)) +
+  geom_boxplot(outlier.color = "gray70", 
+               position = position_dodge(width = 10))+
+  scale_fill_viridis(discrete = TRUE, alpha=0.9, option="D") +
+  theme_minimal()+
+  theme(
+    plot.title = element_text(size=11, face = "bold"),
+    plot.subtitle = element_text(size=10)
+  ) +
+    ggtitle(label =  "Métodos Convencionales",
+          subtitle = "Cálculo de Diferencias") +
+  xlab("Diferencias")+
+  ylab("Promedio")
+
+ggplotly(p2,  width = 800, height = 500,  
+         tooltip = c("ID", "change", "method", "values"))
+```
+
+</center>
+
+:::
+
+
+##
+
+
+
+::: {.panel-tabset .p_small}
+
+### Tabla de Resultados en Promedio
+
+```{r echo=FALSE, warning=FALSE, message=FALSE}
+
+
+tab_mean <- readRDS("results/tabs/MC_clipped_tab_wider_mean.rds") %>% 
+  mutate_if(is.numeric, round, 2) 
+  
+datatable(tab_mean, class = 'cell-border stripe',  rownames = FALSE,
+          filter = 'top', options = list(pageLength = 10, 
+                                         autoWidth = FALSE))%>%
+  DT::formatStyle(columns = colnames(.),  fontSize = '10px')
+```
+
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+Tabla de Resumen General promedios de los sitios con y sin cambios
+<br>
+<br>
+<br>
+<br>
+
+### Gráfico 
+
+<center>
+```{r echo=FALSE, warning=FALSE, message=FALSE, fig.height=4, fig.align='center'}
+
+merge_tabs <- readRDS("results/tabs/MC_clipped_tab_mean.rds") %>% 
+  mutate_if(is.numeric, round, 2) 
+mt <- merge_tabs %>% filter(!Method %in% c("DD_pad_mean", "DD_denoised")) %>%
+  mutate(change = as.factor(change))
+
+p1 <- ggplot(data = mt,
+       mapping = aes(x = Method, y = Mean, fill = change)) +
+  geom_bar(stat = "identity", position="dodge")+
+  scale_fill_viridis(discrete = TRUE, alpha=0.9, option="D") +
+  theme_minimal()+
+  theme(
+    plot.title = element_text(size=11, face = "bold"),
+    plot.subtitle = element_text(size=10)
+  ) +
+  ggtitle(label =  "Métodos Convencionales",
+          subtitle = "Cálculo de Diferencias") +
+  xlab("Diferencias")+
+  ylab("Promedio")
+
+
+ggplotly(p1,  width = 800, height = 500)
+```
+
+</center>
+
+:::
+
+# Trabajos Futuros
+
+##
+
+::: columns
+
+::: {.column  width="50%" .p_small}
+
+
+<br>
+<br>
+<br>
+<br>
+
+## Trabajos Futuros
+
+- ~~Evaluar con polígonos sobre 500 metros~~ (No cambian metricas globales)
+- Calcular Fast SAM espacial
+- Evaluar indices de Similitud (DICE, JACCARD), en los polígonos de turberas donde intersentan con un cambio.
+- Implementar Métodos con CNN (referencia)
+
+
+
+:::
+::: {.column width="5%"}
+:::
+
+::: {.column width="40%" .p_small}
+
+
+<br>
+<br>
+
+
+<center>
+![](images/dice.png){fig-align="center" width="700"}
+![](images/iou.png){fig-align="center" width="300"}
+
+</center>
+:::
+:::
+
+
+
+
+
+# Bibliografía 
+
+
+
+##
+
+
+#### Referencias
+
+- [Understanding Evaluation Metrics in Medical Image Segmentation](https://medium.com/mlearning-ai/understanding-evaluation-metrics-in-medical-image-segmentation-d289a373a3f)
+
+<br>
+
+::: {#refs}
+:::
+

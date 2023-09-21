@@ -25,9 +25,9 @@ format:
 
 <br>
 
--   Disponibilidad SAR DataCube
+-   Disponibilidad SAR Open Data Cube
 -   Área de Estudio   
--   Métodos Convencionales 
+-   Comparación Métodos Convencionales (GEE vs ODC)
 -   Conclusiones  
 -   Trabajos Futuros
 -   Bibliografía 
@@ -50,12 +50,12 @@ format:
 # {background-image="images/diagrama_actual_2.png" background-size="75%" background-position="center"}
 
 
-# Disponibilidad SAR DataCube
+# Disponibilidad SAR Open Data Cube
 
 ## {background-image="images/infra_ODC.png" background-size="55%" background-position="center"}
 
 
-## Data Cube Chile
+## Open Data Cube Chile
 
 ::: columns
 

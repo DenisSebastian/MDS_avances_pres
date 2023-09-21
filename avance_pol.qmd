@@ -1,5 +1,5 @@
 ---
-title: "Avance de Tesis: Sitio_021 y filtros"
+title: "Avance de Tesis: Métodos Convencionionales"
 subtitle: "Sistema de Detección de Cambios en Cambios en Ambientes Naturales Protegidos utilizando CNN"
 # author: "Denis Berroeta"
 # date: "06-03-2023"
@@ -25,6 +25,7 @@ format:
 
 <br>
 
+-   Contexto
 -   Área de Estudio   
 -   Métodos Convencionales
 -   Conclusiones  
@@ -42,6 +43,13 @@ format:
 :::
 :::
 
+
+# Contexto
+
+
+## {background-image="images/solucion.png" background-size="80%" background-position="center" auto-animate=true}
+
+## {background-image="images/hipotesis.png" background-size="80%" background-position="center" auto-animate=true}
 
 
 # {background-image="images/diagrama_actual_2.png" background-size="75%" background-position="center"}
@@ -420,6 +428,32 @@ knitr::include_url("html/ST_021/TTS_roi.html", height = "500px")
 
 :::
 :::
+
+
+
+# Comunicación
+
+
+
+::: columns
+::: {.column  width="45%" .p_small}
+
+![Bitácora de Avances:
+<https://denissebastian.github.io/CNN-Change-Detection/>](images/book_digital.png){fig-align="center" width="600"}
+:::
+
+::: {.column width="5%"}
+:::
+
+::: {.column width="50%" .p_small}
+
+![Presentación de Poster en Simposio Internacional](images/simposio.png){fig-align="center" width="600"}
+
+:::
+:::
+
+
+
 
 # Bibliografía 
 
