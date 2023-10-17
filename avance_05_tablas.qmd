@@ -1,6 +1,6 @@
 ---
 title: "Avance de Tesis: Tabla de Diferencias"
-subtitle: "Sistema de Detección de Cambios en Cambios en Ambientes Naturales Protegidos utilizando CNN"
+subtitle: "Sistema de Detección de Cambios en Turberas de Chiloé utilizando CNN"
 # author: "Denis Berroeta"
 # date: "06-03-2023"
 bibliography: references.bib
@@ -30,7 +30,8 @@ editor_options:
 -   Creación de Dataset Vectorial
 -   Extración de Imagen SAR por Sitio  
 -   Cálculo de Diferencias con Métodos Convencionales
--   Tablas Resúmenes  
+-   Tablas Resúmenes (suma valor de cambio)
+-   Tablas Resúmenes (SAM)
 -   Trabajos Futuros
 -   Bibliografía 
 :::
@@ -161,7 +162,10 @@ editor_options:
 
 
 
-# Resultados
+# Resultados (suma valor de cambio)
+
+
+# {background-image="images/res_1.png" background-size="75%" background-position="center"}
 
 ##
 ::: columns
@@ -173,6 +177,7 @@ editor_options:
 - Se utilizó el contabilizar los pixeles de cambio y obtener un proporción respecto al total.
 - Se espera que los sitios de cambios tenga los valores de diferencia más altos.
 - Se aplicó para cada Sitio
+- Valores de cambios no normalizado
 
 :::
 ::: {.column width="5%"}
@@ -315,6 +320,166 @@ ggplotly(p1,  width = 800, height = 500)
 
 :::
 
+
+# Resultados (SAM)
+
+
+# {background-image="images/res.png" background-size="75%" background-position="center"}
+
+##
+::: columns
+
+::: {.column  width="40%" .p_small}
+
+### Métricas por Pixel
+
+- Se implementó SAM espacial para imágenes Raster (1-canal)
+- Se espera que los sitios de cambios tenga los valores de diferencia más altos.
+- Se aplicó para cada Sitio 
+- "Cambio 1" y "No Cambio" 0
+
+:::
+::: {.column width="5%"}
+:::
+
+::: {.column width="55%" .p_small}
+
+<br>
+
+$$SAM\_MC = \frac{Pixeles \ cambio}{Total\ pixeles} \times100$$
+
+:::
+:::
+
+
+##
+
+
+
+::: {.panel-tabset .p_small}
+
+### Tabla de Resultados SAM
+
+```{r echo=FALSE, warning=FALSE, message=FALSE}
+library(tidyverse)
+library(DT)
+
+tab_gral <- readRDS("results/tabs/sam/MC_SAM_tab.rds") %>% 
+  mutate_if(is.numeric, round, 2) 
+  
+datatable(tab_gral, class = 'cell-border stripe',  rownames = FALSE,
+          filter = 'top', options = list(pageLength = 10, 
+                                         autoWidth = FALSE))%>%
+  DT::formatStyle(columns = colnames(.),  fontSize = '10px')
+```
+
+### Boxplot
+
+<center>
+![](images/sam_box_plot_mean.png){fig-align="center" width="800"}
+</center>
+
+### Gráfico Dinámico { .p_small}
+
+<center>
+```{r echo=FALSE, warning=FALSE, message=FALSE, fig.height=4, fig.align='center'}
+library(plotly)
+library(viridis)
+
+table_longer <- tab_gral %>%
+  pivot_longer(cols = DD:DD_pad_mean, names_to = "method", values_to = "values") %>%
+  filter(!method %in% c("DD_pad_mean", "DD_denoised")) %>%
+  mutate(change = as.factor(change))
+
+p2 <- ggplot(data = table_longer,
+       mapping = aes(x = method, y = values, fill = change)) +
+  geom_boxplot(outlier.color = "gray70", 
+               position = position_dodge(width = 10))+
+  scale_fill_viridis(discrete = TRUE, alpha=0.9, option="D") +
+  theme_minimal()+
+  theme(
+    plot.title = element_text(size=11, face = "bold"),
+    plot.subtitle = element_text(size=10)
+  ) +
+    ggtitle(label =  "Métodos Convencionales",
+          subtitle = "Cálculo de Diferencias") +
+  xlab("Diferencias")+
+  ylab("Promedio")
+
+ggplotly(p2,  width = 800, height = 500,  
+         tooltip = c("ID", "change", "method", "values"))
+```
+
+</center>
+
+:::
+
+
+##
+
+
+
+::: {.panel-tabset .p_small}
+
+### Tabla de Resultados en Promedio SAM
+
+```{r echo=FALSE, warning=FALSE, message=FALSE}
+
+
+tab_mean <- readRDS("results/tabs/sam/MC_SAM_tab_wider_mean.rds") %>% 
+  mutate_if(is.numeric, round, 2) 
+  
+datatable(tab_mean, class = 'cell-border stripe',  rownames = FALSE,
+          filter = 'top', options = list(pageLength = 10, 
+                                         autoWidth = FALSE))%>%
+  DT::formatStyle(columns = colnames(.),  fontSize = '10px')
+```
+
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+Tabla de Resumen General promedios de los sitios con y sin cambios
+<br>
+<br>
+<br>
+<br>
+
+### Gráfico 
+
+<center>
+```{r echo=FALSE, warning=FALSE, message=FALSE, fig.height=4, fig.align='center'}
+
+merge_tabs <- readRDS("results/tabs/sam/MC_SAM_tab_mean.rds") %>% 
+  mutate_if(is.numeric, round, 2) 
+mt <- merge_tabs %>% filter(!Method %in% c("DD_pad_mean", "DD_denoised")) %>%
+  mutate(change = as.factor(change))
+
+p1 <- ggplot(data = mt,
+       mapping = aes(x = Method, y = Mean, fill = change)) +
+  geom_bar(stat = "identity", position="dodge")+
+  scale_fill_viridis(discrete = TRUE, alpha=0.9, option="D") +
+  theme_minimal()+
+  theme(
+    plot.title = element_text(size=11, face = "bold"),
+    plot.subtitle = element_text(size=10)
+  ) +
+  ggtitle(label =  "Métodos Convencionales",
+          subtitle = "Cálculo de Diferencias") +
+  xlab("Diferencias")+
+  ylab("Promedio")
+
+
+ggplotly(p1,  width = 800, height = 500)
+```
+
+</center>
+
+:::
+
+
 # Trabajos Futuros
 
 ##
@@ -332,7 +497,7 @@ ggplotly(p1,  width = 800, height = 500)
 ## Trabajos Futuros
 
 - ~~Evaluar con polígonos sobre 500 metros~~ (No cambian metricas globales)
-- Calcular Fast SAM espacial
+- ~~Calcular Fast SAM espacial~~ Ok, (funciona para mágenes radar, conserva la referencia espacial, exporta en raster, shape, goejson)
 - Evaluar indices de Similitud (DICE, JACCARD), en los polígonos de turberas donde intersentan con un cambio.
 - Implementar Métodos con CNN (referencia)
 

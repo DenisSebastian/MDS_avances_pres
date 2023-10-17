@@ -1,0 +1,386 @@
+---
+title: "Avance de Tesis: Métricas MC"
+subtitle: "Sistema de Detección de Cambios en Turberas de Chiloé utilizando CNN"
+# author: "Denis Berroeta"
+# date: "06-03-2023"
+bibliography: references.bib
+format:
+  revealjs:
+    footer: "Avances de Tesis 06 - Denis Berroeta"
+    logo: "images/arrow.png"
+    preview-links: true
+    css: style/style.css
+    transition: slide
+    center: true
+    chalkboard: true
+    theme: default
+editor_options: 
+  chunk_output_type: console
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(cho=FALSE, warning=FALSE, message=FALSE)
+options(scipen = 999)
+library(tidyverse)
+library(DT)
+library(plotly)
+library(viridis)
+
+r_bar <- readRDS("results/tabs/global_mc_plot.rds")
+var_metrics <- c("precision", "recall", "accuracy", "F1_score", "iou")
+names(r_bar) <- var_metrics
+
+tab_gral <- readRDS("results/tabs/global_mc.rds") %>% 
+  mutate_if(is.numeric, round, 2) 
+```
+
+
+
+# Agenda 
+
+## Agenda
+
+::: columns
+::: {.column  width="38%" .p_small}
+
+
+-   Tablas de Métricas
+-   Gráficos Globales  
+-   Gráficos por Métrica
+
+:::
+
+::: {.column width="2%"}
+:::
+
+::: {.column width="60%" .p_small}
+
+
+![](images/correction_mt.jpeg){fig-align="center" width="830"}
+
+:::
+:::
+
+
+# Tablas de Métricas
+
+## Métodos
+
+
+::: columns
+::: {.column  width="45%" .p_small}
+
+Los resultados que se presentarán corresponden la detección de cambios con métodos convencionales de: 
+
+- Diferencia Directa (DD)
+- Log Mean Ratio (LMR)
+- Enhanced Difference Image (EDI)
+
+Para definir el umbral de cambio se utilizó la técnica de **Triangular Threshold Segmentation**
+:::
+
+::: {.column width="2%"}
+:::
+
+::: {.column width="50%" .p_small}
+
+<br>
+
+![](images/umbral_tts.png){fig-align="center" width="830"}
+
+:::
+:::
+
+
+## 
+
+::: {.panel-tabset .p_small}
+
+## Métricas Globales
+
+```{r FALSE, warning=FALSE, message=FALSE}
+library(tidyverse)
+library(DT)
+
+datatable(tab_gral, class = 'cell-border stripe',  rownames = FALSE,
+          filter = 'top', options = list(pageLength = 10, 
+                                         autoWidth = FALSE))%>%
+  DT::formatStyle(columns = colnames(.),  fontSize = '10px')
+```
+
+## Ecuaciones Métricas
+
+![](images/equations_metrics.png)
+
+
+:::
+
+
+## {background-image="images/plot_metrics.png" background-size="85%" background-position="center"}
+
+
+# Gráficos por Métrica
+
+## Precision
+
+::: columns
+
+::: {.column  width="45%" .p_small}
+
+$$Precision= \frac{TP}{TP+FP}$$
+
+::: {.panel-tabset .p_small}
+
+
+## Tab 
+```{r  echo=FALSE, warning=FALSE, message=FALSE}
+metrics <-  var_metrics[1]
+tab_m <- tab_gral %>% 
+  select(method, estado,matches(metrics),  TP, TN, FP, FN)
+datatable(tab_m, class = 'cell-border stripe',  rownames = FALSE, 
+          options = list(autoWidth = FALSE))%>%
+  DT::formatStyle(columns = colnames(.),  fontSize = '7px')
+```
+:::
+
+:::
+::: {.column width="5%"}
+:::
+
+::: {.column width="50%" .p_small}
+
+<br>
+```{r echo=FALSE, warning=FALSE, message=FALSE,  fig.height=4, fig.align='center'}
+
+graph <- r_bar[[metrics]]
+ggplotly(graph,  width =530, height = 350)
+
+```
+
+:::
+
+:::
+
+
+## Recall
+
+::: columns
+
+::: {.column  width="45%" .p_small}
+
+$$Recall= \frac{TP}{TP+FN}$$
+
+::: {.panel-tabset .p_small}
+
+
+## Tab 
+```{r  echo=FALSE, warning=FALSE, message=FALSE}
+metrics <-  var_metrics[2]
+tab_m <- tab_gral %>% 
+  select(method, estado,matches(metrics),  TP, TN, FP, FN)
+datatable(tab_m, class = 'cell-border stripe',  rownames = FALSE, 
+          options = list(autoWidth = FALSE))%>%
+  DT::formatStyle(columns = colnames(.),  fontSize = '7px')
+```
+:::
+
+:::
+::: {.column width="5%"}
+:::
+
+::: {.column width="50%" .p_small}
+
+<br>
+```{r echo=FALSE, warning=FALSE, message=FALSE,  fig.height=4, fig.align='center'}
+
+graph <- r_bar[[metrics]]
+ggplotly(graph,  width =530, height = 350)
+
+```
+
+:::
+
+:::
+
+
+## Accuracy
+
+::: columns
+
+::: {.column  width="45%" .p_small}
+
+$$Accuracy= \frac{TP+TN}{TP+TN+FN+FP}$$
+
+::: {.panel-tabset .p_small}
+
+
+## Tab 
+```{r  echo=FALSE, warning=FALSE, message=FALSE}
+metrics <-  var_metrics[3]
+tab_m <- tab_gral %>% 
+  select(method, estado,matches(metrics),  TP, TN, FP, FN)
+datatable(tab_m, class = 'cell-border stripe',  rownames = FALSE, 
+          options = list(autoWidth = FALSE))%>%
+  DT::formatStyle(columns = colnames(.),  fontSize = '7px')
+```
+:::
+
+:::
+::: {.column width="5%"}
+:::
+
+::: {.column width="50%" .p_small}
+
+<br>
+```{r echo=FALSE, warning=FALSE, message=FALSE,  fig.height=4, fig.align='center'}
+
+graph <- r_bar[[metrics]]
+ggplotly(graph,  width =530, height = 350)
+
+```
+
+:::
+
+:::
+
+
+## F1 Score
+
+::: columns
+
+::: {.column  width="45%" .p_small}
+
+$$F1\ Score= \frac{2TP}{2TP+FP+FN}$$
+
+::: {.panel-tabset .p_small}
+
+
+## Tab 
+```{r  echo=FALSE, warning=FALSE, message=FALSE}
+metrics <-  var_metrics[4]
+tab_m <- tab_gral %>% 
+  select(method, estado,matches(metrics),  TP, TN, FP, FN)
+datatable(tab_m, class = 'cell-border stripe',  rownames = FALSE, 
+          options = list(autoWidth = FALSE))%>%
+  DT::formatStyle(columns = colnames(.),  fontSize = '7px')
+```
+:::
+
+:::
+::: {.column width="5%"}
+:::
+
+::: {.column width="50%" .p_small}
+
+<br>
+```{r echo=FALSE, warning=FALSE, message=FALSE,  fig.height=4, fig.align='center'}
+
+graph <- r_bar[[metrics]]
+ggplotly(graph,  width =530, height = 350)
+
+```
+
+:::
+
+:::
+
+
+## IoU
+
+::: columns
+
+::: {.column  width="45%" .p_small}
+
+$$IoU= \frac{TP}{TP+FP+FN}$$
+
+::: {.panel-tabset .p_small}
+
+
+## Tab 
+```{r  echo=FALSE, warning=FALSE, message=FALSE}
+metrics <-  var_metrics[5]
+tab_m <- tab_gral %>% 
+  select(method, estado,matches(metrics),  TP, TN, FP, FN)
+datatable(tab_m, class = 'cell-border stripe',  rownames = FALSE, 
+          options = list(autoWidth = FALSE))%>%
+  DT::formatStyle(columns = colnames(.),  fontSize = '7px')
+```
+:::
+
+:::
+::: {.column width="5%"}
+:::
+
+::: {.column width="50%" .p_small}
+
+<br>
+```{r echo=FALSE, warning=FALSE, message=FALSE,  fig.height=4, fig.align='center'}
+
+graph <- r_bar[[metrics]]
+ggplotly(graph,  width =530, height = 350)
+
+```
+
+:::
+
+:::
+
+
+# Trabajos Futuros
+
+##
+
+::: columns
+
+::: {.column  width="50%" .p_small}
+
+
+<br>
+<br>
+<br>
+<br>
+
+## Trabajos Futuros
+
+- Evaluar Métricas con Binarización realizada por SAM 
+- Implementar Métodos con CNN (referencia)
+
+:::
+::: {.column width="5%"}
+:::
+
+::: {.column width="40%" .p_small}
+
+
+<br>
+<br>
+
+
+<center>
+![](images/dice.png){fig-align="center" width="700"}
+![](images/iou.png){fig-align="center" width="300"}
+
+</center>
+:::
+:::
+
+
+
+
+
+# Bibliografía 
+
+
+
+##
+
+
+#### Referencias
+
+- [Understanding Evaluation Metrics in Medical Image Segmentation](https://medium.com/mlearning-ai/understanding-evaluation-metrics-in-medical-image-segmentation-d289a373a3f)
+
+<br>
+
+::: {#refs}
+:::
+
