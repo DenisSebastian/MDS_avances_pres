@@ -26,12 +26,7 @@ library(DT)
 library(plotly)
 library(viridis)
 
-r_bar <- readRDS("results/tabs/global_mc_plot.rds")
-var_metrics <- c("precision", "recall", "accuracy", "F1_score", "iou")
-names(r_bar) <- var_metrics
 
-tab_gral <- readRDS("results/tabs/global_mc.rds") %>% 
-  mutate_if(is.numeric, round, 2) 
 ```
 
 
@@ -44,9 +39,17 @@ tab_gral <- readRDS("results/tabs/global_mc.rds") %>%
 ::: {.column  width="38%" .p_small}
 
 
--   Tablas de Métricas
--   Gráficos Globales  
--   Gráficos por Métrica
+-   Métricas de Intersección para TTS
+-   Métricas de Intersección para SAM  
+-   Comparación TTS vs SAM 
+
+<!-- Acuerdos -->
+<!-- * Global -->
+<!-- * inverir Tp para los estables -->
+<!-- * agregar Recall -->
+<!-- * Area de intesecciñon -> posibilidad de eliminar, cover 1 o 0.9 -->
+<!-- * Revisar otros métodos de umbral (SAM, TTS) Guardar en anexos -->
+
 
 :::
 
@@ -61,44 +64,33 @@ tab_gral <- readRDS("results/tabs/global_mc.rds") %>%
 :::
 :::
 
-
-# Tablas de Métricas
-
-## Métodos
+# {background-image="images/versus_metrics.png" background-size="75%" background-position="center"}
 
 
-::: columns
-::: {.column  width="45%" .p_small}
+# Triangular Threshold Segmentation (TTS)
 
-Los resultados que se presentarán corresponden la detección de cambios con métodos convencionales de: 
 
-- Diferencia Directa (DD)
-- Log Mean Ratio (LMR)
-- Enhanced Difference Image (EDI)
-
-Para definir el umbral de cambio se utilizó la técnica de **Triangular Threshold Segmentation**
-:::
-
-::: {.column width="2%"}
-:::
-
-::: {.column width="50%" .p_small}
-
-<br>
-
-![](images/umbral_tts.png){fig-align="center" width="830"}
-
-:::
-:::
+# {background-image="images/umbral_tts.png" background-size="75%" background-position="center"}
 
 
 ## 
 
 ::: {.panel-tabset .p_small}
 
-## Métricas Globales
+## Métricas Globales TTS
 
-```{r FALSE, warning=FALSE, message=FALSE}
+
+```{r}
+r_bar <- readRDS("results/tabs/global_mc_plot.rds")
+var_metrics <- c("precision", "recall", "accuracy", "F1_score", "iou")
+names(r_bar) <- var_metrics
+
+tab_gral <- readRDS("results/tabs/global_mc.rds") %>% 
+  mutate_if(is.numeric, round, 2) 
+```
+
+
+```{r echo =FALSE, warning=FALSE, message=FALSE}
 library(tidyverse)
 library(DT)
 
@@ -119,7 +111,9 @@ datatable(tab_gral, class = 'cell-border stripe',  rownames = FALSE,
 ## {background-image="images/plot_metrics.png" background-size="85%" background-position="center"}
 
 
-# Gráficos por Métrica
+## Gráficos por Métrica TTS
+
+
 
 ## Precision
 
@@ -326,6 +320,269 @@ ggplotly(graph,  width =530, height = 350)
 :::
 
 
+# Segment Anything Model (SAM)
+
+
+# {background-image="images/umbral_sam.png" background-size="75%" background-position="center"}
+
+
+
+
+## Métricas Globales SAM
+
+::: {.panel-tabset .p_small}
+
+## Métricas Globales SAM
+
+```{r sam}
+r_bar <- readRDS("results/tabs/global_mc_plot_sam.rds")
+var_metrics <- c("precision", "recall", "accuracy", "F1_score", "iou")
+names(r_bar) <- var_metrics
+
+tab_gral <- readRDS("results/tabs/global_mc_sam.rds") %>% 
+  mutate_if(is.numeric, round, 2) 
+```
+
+
+```{r echo =FALSE, warning=FALSE, message=FALSE}
+library(tidyverse)
+library(DT)
+
+datatable(tab_gral, class = 'cell-border stripe',  rownames = FALSE,
+          filter = 'top', options = list(pageLength = 10, 
+                                         autoWidth = FALSE))%>%
+  DT::formatStyle(columns = colnames(.),  fontSize = '10px')
+```
+
+## Ecuaciones Métricas
+
+![](images/equations_metrics.png)
+
+
+:::
+
+
+## Gráficos por Métrica TTS
+
+
+
+
+
+
+## Precision SAM
+
+::: columns
+
+::: {.column  width="45%" .p_small}
+
+$$Precision= \frac{TP}{TP+FP}$$
+
+::: {.panel-tabset .p_small}
+
+
+## Tab 
+```{r  echo=FALSE, warning=FALSE, message=FALSE}
+metrics <-  var_metrics[1]
+tab_m <- tab_gral %>% 
+  select(method, estado,matches(metrics),  TP, TN, FP, FN)
+datatable(tab_m, class = 'cell-border stripe',  rownames = FALSE, 
+          options = list(autoWidth = FALSE))%>%
+  DT::formatStyle(columns = colnames(.),  fontSize = '7px')
+```
+:::
+
+:::
+::: {.column width="5%"}
+:::
+
+::: {.column width="50%" .p_small}
+
+<br>
+```{r echo=FALSE, warning=FALSE, message=FALSE,  fig.height=4, fig.align='center'}
+
+graph <- r_bar[[metrics]]
+ggplotly(graph,  width =530, height = 350)
+
+```
+
+:::
+
+:::
+
+
+## Recall SAM
+
+::: columns
+
+::: {.column  width="45%" .p_small}
+
+$$Recall= \frac{TP}{TP+FN}$$
+
+::: {.panel-tabset .p_small}
+
+
+## Tab 
+```{r  echo=FALSE, warning=FALSE, message=FALSE}
+metrics <-  var_metrics[2]
+tab_m <- tab_gral %>% 
+  select(method, estado,matches(metrics),  TP, TN, FP, FN)
+datatable(tab_m, class = 'cell-border stripe',  rownames = FALSE, 
+          options = list(autoWidth = FALSE))%>%
+  DT::formatStyle(columns = colnames(.),  fontSize = '7px')
+```
+:::
+
+:::
+::: {.column width="5%"}
+:::
+
+::: {.column width="50%" .p_small}
+
+<br>
+```{r echo=FALSE, warning=FALSE, message=FALSE,  fig.height=4, fig.align='center'}
+
+graph <- r_bar[[metrics]]
+ggplotly(graph,  width =530, height = 350)
+
+```
+
+:::
+
+:::
+
+
+## Accuracy SAM
+
+::: columns
+
+::: {.column  width="45%" .p_small}
+
+$$Accuracy= \frac{TP+TN}{TP+TN+FN+FP}$$
+
+::: {.panel-tabset .p_small}
+
+
+## Tab 
+```{r  echo=FALSE, warning=FALSE, message=FALSE}
+metrics <-  var_metrics[3]
+tab_m <- tab_gral %>% 
+  select(method, estado,matches(metrics),  TP, TN, FP, FN)
+datatable(tab_m, class = 'cell-border stripe',  rownames = FALSE, 
+          options = list(autoWidth = FALSE))%>%
+  DT::formatStyle(columns = colnames(.),  fontSize = '7px')
+```
+:::
+
+:::
+::: {.column width="5%"}
+:::
+
+::: {.column width="50%" .p_small}
+
+<br>
+```{r echo=FALSE, warning=FALSE, message=FALSE,  fig.height=4, fig.align='center'}
+
+graph <- r_bar[[metrics]]
+ggplotly(graph,  width =530, height = 350)
+
+```
+
+:::
+
+:::
+
+
+## F1 Score SAM
+
+::: columns
+
+::: {.column  width="45%" .p_small}
+
+$$F1\ Score= \frac{2TP}{2TP+FP+FN}$$
+
+::: {.panel-tabset .p_small}
+
+
+## Tab 
+```{r  echo=FALSE, warning=FALSE, message=FALSE}
+metrics <-  var_metrics[4]
+tab_m <- tab_gral %>% 
+  select(method, estado,matches(metrics),  TP, TN, FP, FN)
+datatable(tab_m, class = 'cell-border stripe',  rownames = FALSE, 
+          options = list(autoWidth = FALSE))%>%
+  DT::formatStyle(columns = colnames(.),  fontSize = '7px')
+```
+:::
+
+:::
+::: {.column width="5%"}
+:::
+
+::: {.column width="50%" .p_small}
+
+<br>
+```{r echo=FALSE, warning=FALSE, message=FALSE,  fig.height=4, fig.align='center'}
+
+graph <- r_bar[[metrics]]
+ggplotly(graph,  width =530, height = 350)
+
+```
+
+:::
+
+:::
+
+
+## IoU SAM
+
+::: columns
+
+::: {.column  width="45%" .p_small}
+
+$$IoU= \frac{TP}{TP+FP+FN}$$
+
+::: {.panel-tabset .p_small}
+
+
+## Tab 
+```{r  echo=FALSE, warning=FALSE, message=FALSE}
+metrics <-  var_metrics[5]
+tab_m <- tab_gral %>% 
+  select(method, estado,matches(metrics),  TP, TN, FP, FN)
+datatable(tab_m, class = 'cell-border stripe',  rownames = FALSE, 
+          options = list(autoWidth = FALSE))%>%
+  DT::formatStyle(columns = colnames(.),  fontSize = '7px')
+```
+:::
+
+:::
+::: {.column width="5%"}
+:::
+
+::: {.column width="50%" .p_small}
+
+<br>
+```{r echo=FALSE, warning=FALSE, message=FALSE,  fig.height=4, fig.align='center'}
+
+graph <- r_bar[[metrics]]
+ggplotly(graph,  width =530, height = 350)
+
+```
+
+:::
+
+:::
+
+# Comparación Gráfica de definciión de Umbrales
+
+# {background-image="images/comp_metrics_1.png" background-size="85%" background-position="center"}
+
+# {background-image="images/comp_metrics_2.png" background-size="85%" background-position="center"}
+
+# {background-image="images/comp_metrics_3.png" background-size="85%" background-position="center"}
+
+
+
 # Trabajos Futuros
 
 ##
@@ -342,7 +599,7 @@ ggplotly(graph,  width =530, height = 350)
 
 ## Trabajos Futuros
 
-- Evaluar Métricas con Binarización realizada por SAM 
+- ~~Evaluar Métricas con Binarización realizada por SAM~~
 - Implementar Métodos con CNN (referencia)
 
 :::
@@ -378,6 +635,10 @@ ggplotly(graph,  width =530, height = 350)
 #### Referencias
 
 - [Understanding Evaluation Metrics in Medical Image Segmentation](https://medium.com/mlearning-ai/understanding-evaluation-metrics-in-medical-image-segmentation-d289a373a3f)
+
+- [Segment Anything Model (SAM)](https://segment-anything.com)
+
+- [Github: Segment Anything](https://github.com/facebookresearch/segment-anything)
 
 <br>
 
